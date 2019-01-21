@@ -15,6 +15,10 @@ ext {
                     moshi  : project(':modules:base:moshi'),
                     restApi: project(':modules:base:rest-api')
             ],
+            api               : [
+                    common: project(':modules:api:common'),
+                    auth  : project(':modules:api:auth')
+            ],
             ui                : [
                     leaderboards: project(':modules:ui:leaderboards')
             ],

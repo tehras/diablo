@@ -1,7 +1,12 @@
 include ':app',
+
         ':modules:ui:leaderboards',
+
         ':modules:base:dagger',
         ':modules:base:theme',
         ':modules:base:log',
         ':modules:base:moshi',
-        ':modules:base:rest-api'
+        ':modules:base:rest-api',
+
+        ':modules:api:common',
+        ':modules:api:auth'

@@ -1,0 +1,8 @@
+dependencies {
+    implementation deps.rxBinding
+    implementation deps.rxBindingRv
+    implementation deps.rxBindingDesign
+    implementation deps.rxBindingKt
+    implementation deps.rxBindingRvKt
+    implementation deps.rxBindingDesignKt
+}

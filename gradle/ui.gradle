@@ -1,0 +1,8 @@
+apply from: "$rootDir/gradle/deps.gradle"
+apply from: "$rootDir/gradle/kotlin.gradle"
+
+dependencies {
+    implementation deps.appcompat
+    implementation deps.ktx
+    implementation deps.constraint
+}

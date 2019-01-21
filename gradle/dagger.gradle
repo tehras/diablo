@@ -1,0 +1,6 @@
+dependencies {
+    implementation deps.base.dagger
+    implementation deps.dagger
+
+    kapt deps.daggerApt
+}

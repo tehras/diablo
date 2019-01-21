@@ -1,0 +1,12 @@
+apply plugin: 'com.android.library'
+apply from: "$rootDir/gradle/android.gradle"
+
+dependencies {
+    implementation deps.dagger
+    kapt deps.daggerApt
+
+    implementation deps.appcompat
+}
+repositories {
+    mavenCentral()
+}

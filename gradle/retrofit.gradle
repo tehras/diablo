@@ -1,0 +1,5 @@
+dependencies {
+    implementation deps.retrofit
+    implementation deps.retrofitMoshi
+    implementation deps.retrofitRx
+}

@@ -2,4 +2,6 @@ include ':app',
         ':modules:ui:leaderboards',
         ':modules:base:dagger',
         ':modules:base:theme',
-        ':modules:base:log'
+        ':modules:base:log',
+        ':modules:base:moshi',
+        ':modules:base:rest-api'

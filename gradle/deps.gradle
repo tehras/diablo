@@ -9,9 +9,11 @@ ext {
 
     deps = [
             base              : [
-                    dagger: project(':modules:base:dagger'),
-                    theme : project(':modules:base:theme'),
-                    log   : project(':modules:base:log')
+                    dagger : project(':modules:base:dagger'),
+                    theme  : project(':modules:base:theme'),
+                    log    : project(':modules:base:log'),
+                    moshi  : project(':modules:base:moshi'),
+                    restApi: project(':modules:base:rest-api')
             ],
             ui                : [
                     leaderboards: project(':modules:ui:leaderboards')
@@ -52,7 +54,7 @@ ext {
 
             moshi             : "com.squareup.moshi:moshi:$moshiVer",
             moshiKotlin       : "com.squareup.moshi:moshi-kotlin:$moshiVer",
-            moshiCodegen      : "com.squareup.moshi:moshi-kotlin-codegen:$moshiVer",
+            moshiApt          : "com.squareup.moshi:moshi-kotlin-codegen:$moshiVer",
 
             timber            : "com.jakewharton.timber:timber:4.7.1"
     ]

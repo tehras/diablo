@@ -1,1 +1,5 @@
 apply from: "$rootDir/gradle/libs-ui.gradle"
+
+android {
+    resourcePrefix 'leaderboards_'
+}

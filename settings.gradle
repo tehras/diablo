@@ -1,3 +1,5 @@
 include ':app',
         ':modules:ui:leaderboards',
-        ':modules:base:dagger'
+        ':modules:base:dagger',
+        ':modules:base:theme',
+        ':modules:base:log'

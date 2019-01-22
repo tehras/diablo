@@ -1,5 +1,10 @@
 apply from: "$rootDir/gradle/libs-ui.gradle"
+apply from: "$rootDir/gradle/retrofit.gradle"
 
 android {
     resourcePrefix 'leaderboards_'
+}
+
+dependencies {
+    implementation deps.api.auth
 }

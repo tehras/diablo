@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.github.tehras.diablobuilder.R
+import com.github.tehras.leaderboards.LeaderboardsListFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -34,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun startLeaderboardsFragment() {
-        // TODO
+        startFragment(LeaderboardsListFragment.newInstance())
     }
 
     private fun startFragment(fragment: Fragment) {

@@ -1,6 +1,6 @@
 dependencies {
-    implementation deps.base.dagger
-    implementation deps.dagger
+    api deps.base.dagger
+    api deps.dagger
 
     kapt deps.daggerApt
 }

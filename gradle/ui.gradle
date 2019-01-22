@@ -9,6 +9,7 @@ dependencies {
     implementation deps.coordinator
     implementation deps.design
 
+    implementation deps.base.arch
     implementation deps.base.theme
     implementation deps.base.log
 }

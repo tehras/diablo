@@ -2,6 +2,7 @@ include ':app',
 
         ':modules:ui:leaderboards',
 
+        ':modules:base:arch',
         ':modules:base:dagger',
         ':modules:base:theme',
         ':modules:base:log',

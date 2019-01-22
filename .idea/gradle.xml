@@ -10,7 +10,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/modules" />
+            <option value="$PROJECT_DIR$/modules/api" />
+            <option value="$PROJECT_DIR$/modules/api/auth" />
+            <option value="$PROJECT_DIR$/modules/api/common" />
             <option value="$PROJECT_DIR$/modules/base" />
+            <option value="$PROJECT_DIR$/modules/base/arch" />
             <option value="$PROJECT_DIR$/modules/base/dagger" />
             <option value="$PROJECT_DIR$/modules/base/log" />
             <option value="$PROJECT_DIR$/modules/base/moshi" />

@@ -1,5 +1,5 @@
 dependencies {
-    implementation deps.retrofit
-    implementation deps.retrofitMoshi
-    implementation deps.retrofitRx
+    api deps.retrofit
+    api deps.retrofitMoshi
+    api deps.retrofitRx
 }

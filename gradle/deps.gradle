@@ -5,10 +5,11 @@ ext {
     def retrofitVer = "2.4.0"
     def moshiVer = "1.6.0"
     def glideVer = '4.8.0'
-    def mvRxVer = "0.7.0"
+    def archVer = '2.0.0-beta01'
 
     deps = [
             base              : [
+                    arch   : project(':modules:base:arch'),
                     dagger : project(':modules:base:dagger'),
                     theme  : project(':modules:base:theme'),
                     log    : project(':modules:base:log'),
@@ -29,6 +30,12 @@ ext {
             coordinator       : "androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01",
             design            : "com.google.android.material:material:1.0.0",
 
+            viewModel         : "androidx.lifecycle:lifecycle-viewmodel:$archVer",
+            viewModelExt      : "androidx.lifecycle:lifecycle-extensions:$archVer",
+            viewModelCommon   : "androidx.lifecycle:lifecycle-common:$archVer",
+            viewModelRuntime  : "androidx.lifecycle:lifecycle-runtime:$archVer",
+            viewModelProcessor: "androidx.lifecycle:lifecycle-compiler:$archVer",
+
             rxJava            : "io.reactivex.rxjava2:rxjava:$rxJavaVer",
             rxKotlin          : "io.reactivex.rxjava2:rxkotlin:$rxJavaVer",
             rxAndroid         : "io.reactivex.rxjava2:rxandroid:2.1.0",
@@ -43,8 +50,6 @@ ext {
             rxBindingSwipe    : "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$rxBindingsVer",
             rxBindingViewPager: "com.jakewharton.rxbinding3:rxbinding-viewpager:$rxBindingsVer",
             rxBindingDesign   : "com.jakewharton.rxbinding3:rxbinding-material:$rxBindingsVer",
-
-            mvRx              : "com.airbnb.android:mvrx:$mvRxVer",
 
             dagger            : "com.google.dagger:dagger:$daggerVer",
             daggerApt         : "com.google.dagger:dagger-compiler:$daggerVer",

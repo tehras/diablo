@@ -3,7 +3,7 @@
  */
 package com.github.tehras.diablobuilder.app
 
-import com.github.tehras.leaderboards.LeaderboardsListComponentCeator
+import com.github.tehras.ui.leaderboards.LeaderboardsListComponentCeator
 
 /**
  * @author tkoshkin

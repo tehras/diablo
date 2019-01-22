@@ -3,10 +3,10 @@ package com.github.tehras.diablobuilder.app
 import android.app.Application
 import android.content.SharedPreferences
 import android.os.StrictMode
-import com.github.tehras.dagger.components.components.ComponentProvider
-import com.github.tehras.dagger.components.components.DaggerApplication
+import com.github.tehras.base.dagger.components.ComponentProvider
+import com.github.tehras.base.dagger.components.DaggerApplication
 import com.github.tehras.diablobuilder.BuildConfig
-import com.github.tehras.log.CrashReportingTree
+import com.github.tehras.base.log.CrashReportingTree
 import timber.log.Timber
 import javax.inject.Inject
 

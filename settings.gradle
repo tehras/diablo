@@ -10,4 +10,5 @@ include ':app',
         ':modules:base:rest-api',
 
         ':modules:api:common',
-        ':modules:api:auth'
+        ':modules:api:leaderboards-service',
+        ':modules:api:auth-service'

@@ -17,8 +17,9 @@ ext {
                     restApi: project(':modules:base:rest-api')
             ],
             api               : [
-                    common: project(':modules:api:common'),
-                    auth  : project(':modules:api:auth')
+                    common      : project(':modules:api:common'),
+                    leaderboards: project(':modules:api:leaderboards-service'),
+                    auth        : project(':modules:api:auth-service')
             ],
             ui                : [
                     leaderboards: project(':modules:ui:leaderboards')

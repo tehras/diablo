@@ -1,12 +1,14 @@
 package com.github.tehras.diablobuilder.app
 
 import android.app.Application
-import com.github.tehras.auth.AuthRetrofitModule
-import com.github.tehras.dagger.components.components.MainComponent
+import com.github.tehras.api.auth.AuthRetrofitModule
+import com.github.tehras.api.auth.ClientModule
+import com.github.tehras.api.leaderboards.LeaderboardsRetrofitModule
+import com.github.tehras.base.dagger.components.MainComponent
+import com.github.tehras.base.moshi.MoshiModule
+import com.github.tehras.base.restapi.RetrofitModule
 import com.github.tehras.dagger.modules.AppModule
 import com.github.tehras.dagger.scopes.ApplicationScope
-import com.github.tehras.moshi.MoshiModule
-import com.github.tehras.restapi.RetrofitModule
 import dagger.BindsInstance
 import dagger.Component
 
@@ -16,8 +18,10 @@ import dagger.Component
     modules = [
         AppModule::class,
         MoshiModule::class,
+        ClientModule::class,
         RetrofitModule::class,
-        AuthRetrofitModule::class
+        AuthRetrofitModule::class,
+        LeaderboardsRetrofitModule::class
     ]
 )
 interface AppComponent :

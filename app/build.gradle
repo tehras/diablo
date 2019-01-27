@@ -4,6 +4,24 @@ apply from: "$rootDir/gradle/ui.gradle"
 apply from: "$rootDir/gradle/dagger.gradle"
 apply from: "$rootDir/gradle/moshi.gradle"
 apply from: "$rootDir/gradle/glide.gradle"
+apply from: "$rootDir/gradle/version.gradle"
+
+android {
+    signingConfigs {
+        release {
+            storeFile System.getenv("RELEASE_STORE_FILE")
+            storePassword System.getenv("RELEASE_STORE_PASSWORD") ?: ""
+            keyAlias System.getenv("RELEASE_KEY_ALIAS") ?: ""
+            keyPassword System.getenv("RELEASE_KEY_PASSWORD") ?: ""
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+}
 
 dependencies {
     implementation deps.base.moshi

@@ -10,6 +10,15 @@ dependencies {
     implementation deps.design
 
     implementation deps.base.arch
+    implementation deps.base.ext
     implementation deps.base.theme
     implementation deps.base.log
+
+    if (project.name != "common-views") {
+        implementation deps.ui.commonviews
+    }
+
+    // Unit Testing
+    testImplementation deps.test.junit
+    testImplementation deps.test.truth
 }

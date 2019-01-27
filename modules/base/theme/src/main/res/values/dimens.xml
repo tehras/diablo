@@ -4,6 +4,7 @@
     <dimen name="vertical_margin">8dp</dimen>
 
     <dimen name="default_padding">16dp</dimen>
+    <dimen name="default_padding_small">8dp</dimen>
 
     <dimen name="elevation_small">2dp</dimen>
     <dimen name="elevation_standard">4dp</dimen>

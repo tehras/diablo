@@ -1,0 +1,6 @@
+apply from: "$rootDir/gradle/libs-ui.gradle"
+apply from: "$rootDir/gradle/retrofit.gradle"
+
+android {
+    resourcePrefix 'common_views_'
+}

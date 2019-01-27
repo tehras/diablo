@@ -15,6 +15,8 @@
         <item name="bgPrimary">@color/bg_primary_dark</item>
         <item name="bgPrimaryTransparent">@color/bg_primary_dark_transparent</item>
 
+        <item name="iconPrimary">@color/icon_primary_dark</item>
+
         <item name="typePrimary">@color/type_primary_dark</item>
         <item name="typeSecondary">@color/type_secondary_dark</item>
 

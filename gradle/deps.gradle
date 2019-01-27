@@ -14,15 +14,23 @@ ext {
                     theme  : project(':modules:base:theme'),
                     log    : project(':modules:base:log'),
                     moshi  : project(':modules:base:moshi'),
+                    ext    : project(':modules:base:extensions'),
+                    glide  : project(':modules:base:glide'),
                     restApi: project(':modules:base:rest-api')
             ],
             api               : [
-                    common      : project(':modules:api:common'),
+                    common      : project(':modules:api:common-service'),
                     leaderboards: project(':modules:api:leaderboards-service'),
-                    auth        : project(':modules:api:auth-service')
+                    auth        : project(':modules:api:auth-service'),
+                    icons       : project(':modules:api:icons-service')
             ],
             ui                : [
-                    leaderboards: project(':modules:ui:leaderboards')
+                    leaderboards: project(':modules:ui:leaderboards'),
+                    commonviews : project(':modules:ui:common-views')
+            ],
+            test              : [
+                    junit: 'junit:junit:4.12',
+                    truth: 'com.google.truth:truth:0.42'
             ],
 
             appcompat         : 'androidx.appcompat:appcompat:1.1.0-alpha01',
@@ -60,7 +68,7 @@ ext {
             retrofitRx        : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer",
 
             glide             : "com.github.bumptech.glide:glide:$glideVer",
-            glideApt          : "com.github.bumptech.glide:glide:$glideVer",
+            glideApt          : "com.github.bumptech.glide:compiler:$glideVer",
 
             moshi             : "com.squareup.moshi:moshi:$moshiVer",
             moshiKotlin       : "com.squareup.moshi:moshi-kotlin:$moshiVer",

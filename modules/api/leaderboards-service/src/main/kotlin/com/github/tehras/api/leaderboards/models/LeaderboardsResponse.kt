@@ -15,13 +15,14 @@ data class LeaderboardsResponse(
 
 @JsonClass(generateAdapter = true)
 data class Row(
-    val player: List<Player>
+    val player: List<Player>,
+    val data: List<Data>
 )
 
 @JsonClass(generateAdapter = true)
 data class Player(
-    val key: String,
-    val accountId: String,
+    val key: String?,
+    val accountId: String?,
     val data: List<Data>
 )
 
@@ -29,5 +30,6 @@ data class Player(
 data class Data(
     val id: String,
     val string: String?,
-    val number: Int?
+    val number: Int?,
+    val timestamp: Long?
 )

@@ -1,0 +1,4 @@
+dependencies {
+    implementation deps.base.glide
+    kapt deps.glideApt
+}

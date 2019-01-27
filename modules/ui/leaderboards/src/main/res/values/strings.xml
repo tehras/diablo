@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="leaderboards_hero_class_avatar">Hero Class Avatar</string>
+    <string name="leaderboards_toolbar_title">Leaderboards</string>
+    <string name="leaderboards_rift_level">Rift Level</string>
+    <string name="leaderboards_completed_in">Completed in</string>
+</resources>

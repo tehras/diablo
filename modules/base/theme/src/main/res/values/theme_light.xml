@@ -18,6 +18,8 @@
         <item name="typePrimary">@color/type_primary_light</item>
         <item name="typeSecondary">@color/type_secondary_light</item>
 
+        <item name="iconPrimary">@color/icon_primary_light</item>
+
         <item name="dividerPrimary">@color/divider_light</item>
 
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle</item>

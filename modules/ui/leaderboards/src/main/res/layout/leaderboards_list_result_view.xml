@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <FrameLayout
+            android:id="@+id/leaderboards_result_rank_wrapper"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/common_views_round_accent"
+    >
+        <TextView
+                android:id="@+id/leaderboards_result_rank_text"
+                style="@style/TextAppearance.AppCompat.Body1"
+                tools:text="1"
+                android:textColor="?bgPrimary"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+    <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/leaderboards_result_rank_wrapper"
+            android:layout_marginStart="@dimen/default_padding"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:text="@string/leaderboards_rift_level"
+            android:textColor="?typeSecondary"
+            app:layout_constraintBottom_toTopOf="@+id/leaderboards_result_rift_time_completed"
+            android:layout_width="wrap_content"
+            android:id="@+id/leaderboards_result_rift_level_label"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/leaderboards_result_rift_level_label"
+            style="@style/TextAppearance.AppCompat.Body1"
+            tools:text="113"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:textColor="?typePrimary"
+            app:layout_constraintBottom_toTopOf="@+id/leaderboards_result_rift_time_completed"
+            android:layout_width="wrap_content"
+            android:id="@+id/leaderboards_result_rift_level"
+            android:layout_height="wrap_content"/>
+
+
+    <TextView
+            app:layout_constraintStart_toEndOf="@+id/leaderboards_result_rank_wrapper"
+            android:layout_marginStart="@dimen/default_padding"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:text="@string/leaderboards_completed_in"
+            app:layout_constraintTop_toBottomOf="@+id/leaderboards_result_rift_level_label"
+            android:textColor="?typeSecondary"
+            android:layout_width="wrap_content"
+            android:id="@+id/leaderboards_result_rift_time_completed_label"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/leaderboards_result_rift_time_completed"
+            app:layout_constraintTop_toBottomOf="@+id/leaderboards_result_rift_level"
+            app:layout_constraintStart_toEndOf="@+id/leaderboards_result_rift_time_completed_label"
+            tools:text="13:31"
+            android:layout_marginStart="4dp"
+            android:textStyle="bold"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="?typePrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="2 days ago"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="?typeSecondary"
+            android:id="@+id/leaderboards_result_rift_completed_at"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

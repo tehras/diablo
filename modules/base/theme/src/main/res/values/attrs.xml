@@ -4,6 +4,8 @@
     <attr name="bgPrimary" format="reference|color" />
     <attr name="bgPrimaryTransparent" format="reference|color" />
 
+    <attr name="iconPrimary" format="reference|color" />
+
     <attr name="typePrimary" format="reference|color" />
     <attr name="typeSecondary" format="reference|color" />
     <attr name="typeTertiary" format="reference|color" />

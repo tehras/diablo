@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/default_padding_small"
+        android:paddingBottom="@dimen/default_padding_small"
+        android:layout_height="wrap_content">
+
+    <FrameLayout
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/default_padding"
+            app:layout_constraintBottom_toTopOf="@+id/leaderboards_player_hero_class"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/common_views_round_border"
+            android:id="@+id/leaderboards_player_avatar_container"
+            android:layout_width="@dimen/leaderboards_avatar_size"
+            android:layout_height="@dimen/leaderboards_avatar_size">
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/leaderboards_player_avatar"
+                tools:src="@tools:sample/avatars"
+                android:layout_margin="1.5dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/leaderboards_hero_class_avatar"/>
+
+    </FrameLayout>
+
+    <TextView
+            app:layout_constraintStart_toStartOf="@+id/leaderboards_player_avatar_container"
+            tools:text="Demon Hunter"
+            android:id="@+id/leaderboards_player_hero_class"
+            android:layout_width="wrap_content"
+            android:textSize="8sp"
+            android:layout_marginTop="4dp"
+            android:textAlignment="center"
+            android:textColor="?typeSecondary"
+            style="@style/TextAppearance.AppCompat.Caption"
+            app:layout_constraintEnd_toEndOf="@id/leaderboards_player_avatar_container"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/leaderboards_player_avatar_container"
+            android:layout_height="wrap_content"
+            tools:ignore="SmallSp"/>
+
+    <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/leaderboards_player_avatar_container"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_width="0dp"
+            android:id="@+id/leaderboards_player_name"
+            tools:text="WeAre..Tehras"
+            android:textStyle="bold"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/leaderboards_player_paragon"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="?typePrimary"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            app:layout_constraintTop_toBottomOf="@+id/leaderboards_player_name"
+            tools:text="Paragon Level 1530"
+            android:id="@+id/leaderboards_player_paragon"
+            style="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="?typeSecondary"
+            app:layout_constraintStart_toStartOf="@id/leaderboards_player_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/leaderboards_player_hero_class"
+            android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

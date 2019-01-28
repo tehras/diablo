@@ -8,6 +8,8 @@ dependencies {
     implementation deps.constraint
     implementation deps.coordinator
     implementation deps.design
+    implementation deps.recyclerViewAdapter
+    implementation deps.lottie
 
     implementation deps.base.arch
     implementation deps.base.ext

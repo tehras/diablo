@@ -12,12 +12,12 @@ import com.github.tehras.api.leaderboards.LeaderboardsType
 import com.github.tehras.base.arch.ObservableViewModel
 import com.github.tehras.base.arch.rx.shareBehavior
 import com.github.tehras.ui.commonviews.bottomsheet.SelectorBottomSheet
+import com.github.tehras.ui.leaderboards.adapter.LeaderboardsBody
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.withLatestFrom
 import io.reactivex.schedulers.Schedulers
-import timber.log.Timber
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -43,7 +43,6 @@ class LeaderboardsListViewModel @Inject constructor(
             .observeOn(Schedulers.io())
             .doOnNext {
                 leaderboardsPersistor.updateLeaderboards(it)
-                Timber.d("thread :: ${Thread.currentThread()}")
             }
             .startWith(leaderboardsPersistor.currentLeaderboards())
             .shareBehavior()
@@ -62,23 +61,37 @@ class LeaderboardsListViewModel @Inject constructor(
             .oauthToken()
             .toObservable()
 
-        val leaderboardsData = Observables
+        val fetchData = Observables
             .combineLatest(tokenObservable, filterObservable)
             .flatMapSingle { (_, type) ->
                 leaderboardsService.getLeaderboard(seasonPersistor.currentSeason(), type.serverType)
             }
             .subscribeOn(Schedulers.io())
             .map { dataConverter.convertToUiData(it) }
+            .shareBehavior()
+
+        val loadingStatus = Observable
+            .merge(
+                fetchData.map { LeaderboardsListState.DataState.SUCCESS },
+                filterObservable.map { LeaderboardsListState.DataState.LOADING }
+            )
+
+        val dataRefresh = uiEvents()
+            .ofType<LeaderboardsListUiEvent.LeaderboardsTypeSelected>()
+            .map { listOf<LeaderboardsBody>() }
+
+        val leaderboardsData = Observable
+            .merge(dataRefresh, fetchData)
 
         val dialogsToShow = leaderboardsSelectDialog
             .flatMap { Observable.just(it, LeaderboardsDialog.NoDialog) }
             .startWith(LeaderboardsDialog.NoDialog)
 
         Observables
-            .combineLatest(leaderboardsData, dialogsToShow)
-            .map { (data, dialog) ->
+            .combineLatest(leaderboardsData, dialogsToShow, loadingStatus)
+            .map { (data, dialog, status) ->
                 LeaderboardsListState(
-                    loadingState = LeaderboardsListState.DataState.SUCCESS,
+                    loadingState = status,
                     listData = data,
                     dialogToShow = dialog
                 )

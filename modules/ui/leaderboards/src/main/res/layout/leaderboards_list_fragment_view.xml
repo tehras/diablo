@@ -35,4 +35,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+    <com.github.tehras.ui.commonviews.views.LoadingView
+            android:id="@+id/leaderboards_loading"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.tehras.api.leaderboards.LeaderboardsType.values
@@ -24,6 +23,7 @@ import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.leaderboards_list_fragment_view.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -83,6 +83,19 @@ class LeaderboardsListFragment : Fragment() {
                     is LeaderboardsDialog.LeaderboardsSelectDialog -> showSelectDialog(it.items)
                 }
             }
+
+        disposables += viewModel
+            .observeState()
+            .map { it.loadingState }
+            .distinctUntilChanged()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                if (it == LeaderboardsListState.DataState.LOADING) {
+                    leaderboards_loading.show()
+                } else {
+                    leaderboards_loading.hide()
+                }
+            }
     }
 
     private fun showSelectDialog(items: List<SelectorBottomSheet.Item>) {
@@ -109,7 +122,7 @@ class LeaderboardsListFragment : Fragment() {
     private fun initRv() {
         leaderboards_rv.run {
             layoutManager = LinearLayoutManager(context)
-            itemAnimator = DefaultItemAnimator()
+            itemAnimator = SlideInUpAnimator()
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             setHasFixedSize(true)
             adapter = leaderboardsListAdapter

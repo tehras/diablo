@@ -9,7 +9,7 @@ ext {
     def appCenterSdkVersion = '1.11.2'
 
     deps = [
-            base              : [
+            base               : [
                     arch   : project(':modules:base:arch'),
                     dagger : project(':modules:base:dagger'),
                     theme  : project(':modules:base:theme'),
@@ -19,65 +19,68 @@ ext {
                     glide  : project(':modules:base:glide'),
                     restApi: project(':modules:base:rest-api')
             ],
-            api               : [
+            api                : [
                     common      : project(':modules:api:common-service'),
                     leaderboards: project(':modules:api:leaderboards-service'),
                     auth        : project(':modules:api:auth-service'),
                     icons       : project(':modules:api:icons-service')
             ],
-            ui                : [
+            ui                 : [
                     leaderboards: project(':modules:ui:leaderboards'),
                     commonviews : project(':modules:ui:common-views')
             ],
-            test              : [
+            test               : [
                     junit: 'junit:junit:4.12',
                     truth: 'com.google.truth:truth:0.42'
             ],
 
-            appcompat         : 'androidx.appcompat:appcompat:1.1.0-alpha01',
-            ktx               : 'androidx.core:core-ktx:1.1.0-alpha03',
-            constraint        : 'androidx.constraintlayout:constraintlayout:1.1.3',
-            coordinator       : "androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01",
-            design            : "com.google.android.material:material:1.0.0",
+            appcompat          : 'androidx.appcompat:appcompat:1.1.0-alpha01',
+            ktx                : 'androidx.core:core-ktx:1.1.0-alpha03',
+            constraint         : 'androidx.constraintlayout:constraintlayout:1.1.3',
+            coordinator        : "androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01",
+            design             : "com.google.android.material:material:1.0.0",
 
-            viewModel         : "androidx.lifecycle:lifecycle-viewmodel:$archVer",
-            viewModelExt      : "androidx.lifecycle:lifecycle-extensions:$archVer",
-            viewModelCommon   : "androidx.lifecycle:lifecycle-common:$archVer",
-            viewModelRuntime  : "androidx.lifecycle:lifecycle-runtime:$archVer",
-            viewModelProcessor: "androidx.lifecycle:lifecycle-compiler:$archVer",
+            recyclerViewAdapter: "jp.wasabeef:recyclerview-animators:3.0.0",
+            lottie             : "com.airbnb.android:lottie:3.0.0-beta1",
 
-            rxJava            : "io.reactivex.rxjava2:rxjava:$rxJavaVer",
-            rxKotlin          : "io.reactivex.rxjava2:rxkotlin:$rxJavaVer",
-            rxAndroid         : "io.reactivex.rxjava2:rxandroid:2.1.0",
-            rxRelay           : "com.jakewharton.rxrelay2:rxrelay:2.0.0",
+            viewModel          : "androidx.lifecycle:lifecycle-viewmodel:$archVer",
+            viewModelExt       : "androidx.lifecycle:lifecycle-extensions:$archVer",
+            viewModelCommon    : "androidx.lifecycle:lifecycle-common:$archVer",
+            viewModelRuntime   : "androidx.lifecycle:lifecycle-runtime:$archVer",
+            viewModelProcessor : "androidx.lifecycle:lifecycle-compiler:$archVer",
 
-            rxBinding         : "com.jakewharton.rxbinding3:rxbinding-core:$rxBindingsVer",
-            rxBindingApp      : "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingsVer",
-            rxBindingDrawer   : "com.jakewharton.rxbinding3:rxbinding-drawerlayout:$rxBindingsVer",
-            rxBindingLeanback : "com.jakewharton.rxbinding3:rxbinding-leanback:$rxBindingsVer",
-            rxBindingRv       : "com.jakewharton.rxbinding3:rxbinding-recyclerview:$rxBindingsVer",
-            rxBindingSlide    : "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:$rxBindingsVer",
-            rxBindingSwipe    : "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$rxBindingsVer",
-            rxBindingViewPager: "com.jakewharton.rxbinding3:rxbinding-viewpager:$rxBindingsVer",
-            rxBindingDesign   : "com.jakewharton.rxbinding3:rxbinding-material:$rxBindingsVer",
+            rxJava             : "io.reactivex.rxjava2:rxjava:$rxJavaVer",
+            rxKotlin           : "io.reactivex.rxjava2:rxkotlin:$rxJavaVer",
+            rxAndroid          : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            rxRelay            : "com.jakewharton.rxrelay2:rxrelay:2.0.0",
 
-            dagger            : "com.google.dagger:dagger:$daggerVer",
-            daggerApt         : "com.google.dagger:dagger-compiler:$daggerVer",
+            rxBinding          : "com.jakewharton.rxbinding3:rxbinding-core:$rxBindingsVer",
+            rxBindingApp       : "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxBindingsVer",
+            rxBindingDrawer    : "com.jakewharton.rxbinding3:rxbinding-drawerlayout:$rxBindingsVer",
+            rxBindingLeanback  : "com.jakewharton.rxbinding3:rxbinding-leanback:$rxBindingsVer",
+            rxBindingRv        : "com.jakewharton.rxbinding3:rxbinding-recyclerview:$rxBindingsVer",
+            rxBindingSlide     : "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:$rxBindingsVer",
+            rxBindingSwipe     : "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$rxBindingsVer",
+            rxBindingViewPager : "com.jakewharton.rxbinding3:rxbinding-viewpager:$rxBindingsVer",
+            rxBindingDesign    : "com.jakewharton.rxbinding3:rxbinding-material:$rxBindingsVer",
 
-            retrofit          : "com.squareup.retrofit2:retrofit:$retrofitVer",
-            retrofitMoshi     : "com.squareup.retrofit2:converter-moshi:$retrofitVer",
-            retrofitRx        : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer",
+            dagger             : "com.google.dagger:dagger:$daggerVer",
+            daggerApt          : "com.google.dagger:dagger-compiler:$daggerVer",
 
-            glide             : "com.github.bumptech.glide:glide:$glideVer",
-            glideApt          : "com.github.bumptech.glide:compiler:$glideVer",
+            retrofit           : "com.squareup.retrofit2:retrofit:$retrofitVer",
+            retrofitMoshi      : "com.squareup.retrofit2:converter-moshi:$retrofitVer",
+            retrofitRx         : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVer",
 
-            moshi             : "com.squareup.moshi:moshi:$moshiVer",
-            moshiKotlin       : "com.squareup.moshi:moshi-kotlin:$moshiVer",
-            moshiApt          : "com.squareup.moshi:moshi-kotlin-codegen:$moshiVer",
+            glide              : "com.github.bumptech.glide:glide:$glideVer",
+            glideApt           : "com.github.bumptech.glide:compiler:$glideVer",
 
-            appCenterAnalytics: "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}",
-            appCenterCrashes  : "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}",
+            moshi              : "com.squareup.moshi:moshi:$moshiVer",
+            moshiKotlin        : "com.squareup.moshi:moshi-kotlin:$moshiVer",
+            moshiApt           : "com.squareup.moshi:moshi-kotlin-codegen:$moshiVer",
 
-            timber            : "com.jakewharton.timber:timber:4.7.1"
+            appCenterAnalytics : "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}",
+            appCenterCrashes   : "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}",
+
+            timber             : "com.jakewharton.timber:timber:4.7.1"
     ]
 }

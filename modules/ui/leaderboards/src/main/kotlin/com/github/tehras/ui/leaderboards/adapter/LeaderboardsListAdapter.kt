@@ -42,10 +42,16 @@ class LeaderboardsListAdapter : RecyclerView.Adapter<LeaderboardsListBaseViewHol
     }
 
     override fun accept(data: List<LeaderboardsBody>) {
+        val originallyEmpty = this.data.isEmpty()
+
         this.data.clear()
         this.data.addAll(data)
 
-        notifyDataSetChanged()
+        if (originallyEmpty) {
+            notifyItemRangeInserted(0, data.size)
+        } else {
+            notifyDataSetChanged()
+        }
     }
 
     enum class Type(val layout: Int) {

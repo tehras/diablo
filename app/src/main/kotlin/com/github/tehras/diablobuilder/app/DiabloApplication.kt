@@ -31,15 +31,6 @@ class DiabloApplication : Application(), DaggerApplication, ComponentProvider<Ap
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
 
-            StrictMode.setThreadPolicy(
-                StrictMode.ThreadPolicy.Builder()
-                    .detectDiskReads()
-                    .detectDiskWrites()
-                    .detectNetwork()   // or .detectAll() for all detectable problems
-                    .penaltyLog()
-                    .build()
-            )
-
             StrictMode.setVmPolicy(
                 StrictMode.VmPolicy.Builder()
                     .detectLeakedSqlLiteObjects()

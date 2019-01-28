@@ -17,6 +17,7 @@ import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.withLatestFrom
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -38,8 +39,12 @@ class LeaderboardsListViewModel @Inject constructor(
         val filterObservable = uiEvents()
             .ofType<LeaderboardsListUiEvent.LeaderboardsTypeSelected>()
             .map { it.type }
-            .doOnNext { leaderboardsPersistor.updateLeaderboards(it) }
             .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.io())
+            .doOnNext {
+                leaderboardsPersistor.updateLeaderboards(it)
+                Timber.d("thread :: ${Thread.currentThread()}")
+            }
             .startWith(leaderboardsPersistor.currentLeaderboards())
             .shareBehavior()
 

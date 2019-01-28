@@ -11,7 +11,6 @@ import androidx.lifecycle.OnLifecycleEvent
  * @author tkoshkin
  */
 class ObservableViewModelInstructor(private val viewModel: ObservableViewModel<*, *>) : LifecycleObserver {
-
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     internal fun onCreate() {
         viewModel.create()

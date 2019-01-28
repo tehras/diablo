@@ -1,2 +1,3 @@
-<manifest package="com.github.tehras.ui.leaderboards">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.github.tehras.ui.leaderboards">
+    <application android:supportsRtl="true"/>
 </manifest>

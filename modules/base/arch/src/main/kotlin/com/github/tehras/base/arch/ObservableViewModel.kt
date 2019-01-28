@@ -64,8 +64,7 @@ abstract class ObservableViewModel<State, UiEvent> : ViewModel(), Consumer<UiEve
     }
 
     @MainThread
-    @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
-    fun create() {
+    internal fun create() {
         if (lifecycle === Lifecycle.State.INITIALIZED) {
             lifecycleRelay.accept(Lifecycle.State.CREATED)
             onCreate()
@@ -74,8 +73,7 @@ abstract class ObservableViewModel<State, UiEvent> : ViewModel(), Consumer<UiEve
     }
 
     @MainThread
-    @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
-    fun start() {
+    internal fun start() {
         if (lifecycle === Lifecycle.State.INITIALIZED) {
             create() // weird, call create first
         }
@@ -86,8 +84,7 @@ abstract class ObservableViewModel<State, UiEvent> : ViewModel(), Consumer<UiEve
     }
 
     @MainThread
-    @VisibleForTesting(otherwise = VisibleForTesting.PACKAGE_PRIVATE)
-    fun stop() {
+    internal fun stop() {
         if (lifecycle === Lifecycle.State.INITIALIZED) {
             create() // weird, shouldn't happen, but just in case
         }

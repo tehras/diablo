@@ -1,14 +1,15 @@
 package com.github.tehras.diablobuilder.app
 
 import android.app.Application
-import android.content.SharedPreferences
 import android.os.StrictMode
 import com.github.tehras.base.dagger.components.ComponentProvider
 import com.github.tehras.base.dagger.components.DaggerApplication
-import com.github.tehras.diablobuilder.BuildConfig
 import com.github.tehras.base.log.CrashReportingTree
+import com.github.tehras.diablobuilder.BuildConfig
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import timber.log.Timber
-import javax.inject.Inject
 
 /**
  * @author tkoshkin created on 8/24/18
@@ -21,9 +22,6 @@ class DiabloApplication : Application(), DaggerApplication, ComponentProvider<Ap
     override fun getComponent(): AppComponent {
         return appComponent
     }
-
-    @Inject
-    lateinit var sharedPrefs: SharedPreferences
 
     override fun onCreate() {
         appComponent = DaggerAppComponent.builder()
@@ -52,6 +50,12 @@ class DiabloApplication : Application(), DaggerApplication, ComponentProvider<Ap
             )
         } else {
             Timber.plant(CrashReportingTree())
+
+            AppCenter.start(
+                this,
+                "fcb64968-1337-4077-bd45-7362c113854f",
+                Analytics::class.java, Crashes::class.java
+            )
         }
 
         appComponent.plusApplication(this)

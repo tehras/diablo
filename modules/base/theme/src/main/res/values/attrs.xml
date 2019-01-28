@@ -2,6 +2,7 @@
 <resources>
     <attr name="appBar" format="reference|color" />
     <attr name="bgPrimary" format="reference|color" />
+    <attr name="bgSecondary" format="reference|color" />
     <attr name="bgPrimaryTransparent" format="reference|color" />
 
     <attr name="iconPrimary" format="reference|color" />

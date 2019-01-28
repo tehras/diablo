@@ -17,13 +17,17 @@ import io.reactivex.functions.Consumer
  * @author tkoshkin
  */
 @Suppress("MemberVisibilityCanBePrivate", "NON_EXHAUSTIVE_WHEN", "unused")
-abstract class ObservableViewModel<State, UiEvent> : ViewModel() {
+abstract class ObservableViewModel<State, UiEvent> : ViewModel(), Consumer<UiEvent> {
 
     private val stateRelay = BehaviorRelay.create<State>()!!
     private val uiEvents = PublishRelay.create<UiEvent>()!!
 
     private val lifecycleRelay = BehaviorRelay.createDefault(Lifecycle.State.INITIALIZED)!!
     private val lifecycle get() = lifecycleRelay.value!!
+
+    override fun accept(uiEvent: UiEvent) {
+        uiEvents.accept(uiEvent)
+    }
 
     /**
      * This is called once when the view model is created. This gives you a chance to initialize streams after the
@@ -124,11 +128,6 @@ abstract class ObservableViewModel<State, UiEvent> : ViewModel() {
             .takeUntilDestroyed()
     }
 
-    /**
-     * Returns a consumer that you can use to send ui events to this view model.
-     */
-    fun consume(): Consumer<UiEvent> = uiEvents
-
     final override fun onCleared() {
         destroy()
     }
@@ -170,5 +169,5 @@ abstract class ObservableViewModel<State, UiEvent> : ViewModel() {
     /**
      * Returns the stream of all UI events. This stream completes when the view model is destroyed.
      */
-    protected fun uiEvents(): Observable<UiEvent> = uiEvents.takeUntilDestroyed()
+    protected fun uiEvents(): Observable<UiEvent> = uiEvents
 }

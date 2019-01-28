@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
+              android:gravity="center_vertical"
+              android:padding="@dimen/default_padding"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/selector_item_container"
+              android:background="?selectableItemBackground"
+              tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+            android:id="@+id/selector_item_image"
+            tools:src="@tools:sample/avatars"
+            android:layout_width="@dimen/common_views_selector_item_icon_size"
+            android:layout_height="@dimen/common_views_selector_item_icon_size"
+            android:contentDescription="@string/common_views_selector_icon_image"/>
+
+    <TextView
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="?typePrimary"
+            android:id="@+id/selector_item_text"
+            tools:text="Some Item"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    />
+
+</LinearLayout>

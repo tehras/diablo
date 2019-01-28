@@ -26,14 +26,14 @@ class LeaderboardsPersistor @Inject constructor(private val sharedPreferences: S
     }
 }
 
-enum class LeaderboardsType(val type: String) {
-    SOLO_BARB("rift-barbarian"),
-    SOLO_CRUSADER("rift-crusader"),
-    SOLO_NECRO("rift-necromancer"),
-    SOLO_WIZARD("rift-wizard"),
-    SOLO_WITCH_DCTOR("rift-wd"),
-    SOLO_MONK("rift-monk"),
-    DUOS("rift-team-2"),
-    THREES("rift-team-3"),
-    QUADS("rift-team-4")
+enum class LeaderboardsType(val serverType: String, val description: String) {
+    SOLO_BARB("rift-barbarian", "Barbarian"),
+    SOLO_CRUSADER("rift-crusader", "Crusader"),
+    SOLO_MONK("rift-monk", "Monk"),
+    SOLO_NECRO("rift-necromancer", "Necromancer"),
+    SOLO_WIZARD("rift-wizard", "Wizard"),
+    SOLO_WITCH_DOCTOR("rift-wd", "Witch Doctor"),
+    DUOS("rift-team-2", "Duos"),
+    THREES("rift-team-3", "Threes"),
+    QUADS("rift-team-4", "Squads")
 }

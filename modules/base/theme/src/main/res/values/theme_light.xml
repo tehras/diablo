@@ -13,6 +13,7 @@
 
         <item name="appBar">@color/app_bar_light</item>
         <item name="bgPrimary">@color/bg_primary_light</item>
+        <item name="bgSecondary">@color/bg_secondary_light</item>
         <item name="bgPrimaryTransparent">@color/bg_primary_light_transparent</item>
 
         <item name="typePrimary">@color/type_primary_light</item>
@@ -24,7 +25,20 @@
 
         <item name="actionOverflowButtonStyle">@style/ActionOverflowButtonStyle</item>
         <item name="toolbarNavigationButtonStyle">@style/ToolbarNavigationButtonStyle</item>
+
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
+
+    <!--- For Bottom Sheet -->
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetModalStyle</item>
+    </style>
+
+    <style name="BottomSheetModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottom_sheet_rounded</item>
+    </style>
+
+    <!-- Bottom Sheet Ended -->
 
     <style name="ToolbarNavigationButtonStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="tint">@color/type_primary_light</item>

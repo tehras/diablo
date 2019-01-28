@@ -3,7 +3,12 @@
  */
 package com.github.tehras.ui.leaderboards
 
+import com.github.tehras.api.leaderboards.LeaderboardsType
+
 /**
  * @author tkoshkin
  */
-class LeaderboardsListUiEvent
+sealed class LeaderboardsListUiEvent {
+    data class LeaderboardsTypeSelected(val type: LeaderboardsType) : LeaderboardsListUiEvent()
+    object LeaderboardsTypeFilterTapped : LeaderboardsListUiEvent()
+}

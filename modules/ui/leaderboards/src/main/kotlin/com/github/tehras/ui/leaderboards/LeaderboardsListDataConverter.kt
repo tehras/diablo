@@ -2,7 +2,6 @@ package com.github.tehras.ui.leaderboards
 
 import androidx.annotation.VisibleForTesting
 import com.github.tehras.api.icons.heroIconMd
-import com.github.tehras.api.leaderboards.LeaderboardsType
 import com.github.tehras.api.leaderboards.models.Data
 import com.github.tehras.api.leaderboards.models.LeaderboardsResponse
 import com.github.tehras.api.leaderboards.models.Player
@@ -17,32 +16,27 @@ import javax.inject.Inject
 @FragmentScope
 class LeaderboardsListDataConverter @Inject constructor() {
 
+    private var lastRank = 0
+
     @Synchronized
-    fun convertToUiData(remoteData: LeaderboardsResponse, type: LeaderboardsType): List<LeaderboardsBody> {
+    fun convertToUiData(remoteData: LeaderboardsResponse): List<LeaderboardsBody> {
+        lastRank = 0
         return remoteData
             .row
             .filter { it.data[0].id == "Rank" }
             .map {
-                convertToBody(it, type)
+                lastRank++
+                convertToBody(it)
             }
     }
 
     private fun convertToBody(
-        row: Row,
-        type: LeaderboardsType
+        row: Row
     ): LeaderboardsBody {
         val mappedData = row.data.convertToMap()
-        val rank = {
-            val factor = when (type) {
-                LeaderboardsType.DUOS -> 2
-                LeaderboardsType.THREES -> 3
-                LeaderboardsType.QUADS -> 4
-                else -> 1
-            }
-            mappedData["Rank"]?.toIntOrNull()?.div(factor)?.plus(1)?.toString() ?: "N/A"
-        }
+
         return LeaderboardsBody(
-            rank = rank(),
+            rank = lastRank.toString(),
             riftLevel = mappedData["RiftLevel"] ?: "N/A",
             riftTime = mappedData["RiftTime"].toTime(),
             completedTime = mappedData["CompletedTime"].toDate(),
@@ -77,6 +71,17 @@ class LeaderboardsListDataConverter @Inject constructor() {
 
         return "$clan$name"
     }
+//
+//    @VisibleForTesting
+//    fun rank(type: LeaderboardsType, data: String?): String {
+//        val factor = when (type) {
+//            LeaderboardsType.DUOS -> 2
+//            LeaderboardsType.THREES -> 3
+//            LeaderboardsType.QUADS -> 4
+//            else -> 1
+//        }
+//        return data?.toIntOrNull()?.div(factor)?.plus(1)?.toString() ?: "N/A"
+//    }
 }
 
 @VisibleForTesting

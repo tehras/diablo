@@ -4,4 +4,5 @@
     <string name="leaderboards_toolbar_title">Leaderboards</string>
     <string name="leaderboards_rift_level">Rift Level</string>
     <string name="leaderboards_completed_in">Completed in</string>
+    <string name="leaderboards_select_item_title">Select Leaderboard</string>
 </resources>

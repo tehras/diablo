@@ -3,6 +3,7 @@
  */
 package com.github.tehras.api.common
 
+import com.github.tehras.api.common.persist.RegionPersistor
 import com.github.tehras.dagger.scopes.ApplicationScope
 import javax.inject.Inject
 

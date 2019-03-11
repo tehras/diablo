@@ -1,6 +1,7 @@
 include ':app',
 
         ':modules:ui:leaderboards',
+        ':modules:ui:players',
         ':modules:ui:common-views',
 
         ':modules:base:arch',

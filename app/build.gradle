@@ -6,23 +6,7 @@ apply from: "$rootDir/gradle/moshi.gradle"
 apply from: "$rootDir/gradle/glide.gradle"
 apply from: "$rootDir/gradle/version.gradle"
 apply from: "$rootDir/gradle/appcenter.gradle"
-
-android {
-    signingConfigs {
-        release {
-            storeFile file("../release.jks")
-            storePassword System.getenv("RELEASE_STORE_PASSWORD") ?: ""
-            keyAlias System.getenv("RELEASE_KEY_ALIAS") ?: ""
-            keyPassword System.getenv("RELEASE_KEY_PASSWORD") ?: ""
-        }
-    }
-
-    buildTypes {
-        release {
-            signingConfig signingConfigs.release
-        }
-    }
-}
+apply from: "$rootDir/gradle/release.gradle"
 
 dependencies {
     implementation deps.base.moshi
@@ -32,4 +16,5 @@ dependencies {
     implementation deps.api.leaderboards
 
     implementation deps.ui.leaderboards
+    implementation deps.ui.players
 }

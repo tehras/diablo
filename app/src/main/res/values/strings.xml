@@ -1,3 +1,4 @@
 <resources>
     <string name="menu_leaderboard">Leaderboard</string>
+    <string name="menu_players">Players</string>
 </resources>

@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/modules/ui" />
             <option value="$PROJECT_DIR$/modules/ui/common-views" />
             <option value="$PROJECT_DIR$/modules/ui/leaderboards" />
+            <option value="$PROJECT_DIR$/modules/ui/players" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -36,8 +36,11 @@ class LeaderboardsListViewModel @Inject constructor(
     override fun onCreate() {
         super.onCreate()
 
-        val filterObservable = uiEvents()
+        val filterObservableUiEvent = uiEvents()
             .ofType<LeaderboardsListUiEvent.LeaderboardsTypeSelected>()
+            .shareBehavior()
+
+        val filterObservable = filterObservableUiEvent
             .map { it.type }
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
@@ -45,7 +48,6 @@ class LeaderboardsListViewModel @Inject constructor(
                 leaderboardsPersistor.updateLeaderboards(it)
             }
             .startWith(leaderboardsPersistor.currentLeaderboards())
-            .shareBehavior()
 
         val leaderboardsSelectDialog = uiEvents()
             .ofType<LeaderboardsListUiEvent.LeaderboardsTypeFilterTapped>()
@@ -56,6 +58,7 @@ class LeaderboardsListViewModel @Inject constructor(
                     .map { mapTypeToItem(it, selected) }
             }
             .map { LeaderboardsDialog.LeaderboardsSelectDialog(it) }
+            .shareBehavior()
 
         val tokenObservable = tokenProvider
             .oauthToken()
@@ -73,7 +76,7 @@ class LeaderboardsListViewModel @Inject constructor(
         val loadingStatus = Observable
             .merge(
                 fetchData.map { LeaderboardsListState.DataState.SUCCESS },
-                filterObservable.map { LeaderboardsListState.DataState.LOADING }
+                filterObservableUiEvent.map { LeaderboardsListState.DataState.LOADING }
             )
 
         val dataRefresh = uiEvents()

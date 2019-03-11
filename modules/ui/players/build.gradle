@@ -1,0 +1,12 @@
+apply from: "$rootDir/gradle/libs-ui.gradle"
+apply from: "$rootDir/gradle/retrofit.gradle"
+apply from: "$rootDir/gradle/glide.gradle"
+
+android {
+    resourcePrefix 'players_'
+}
+
+dependencies {
+    implementation deps.api.auth
+    implementation deps.api.icons
+}

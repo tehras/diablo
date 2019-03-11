@@ -19,10 +19,10 @@ import io.reactivex.functions.Consumer
 @Suppress("MemberVisibilityCanBePrivate", "NON_EXHAUSTIVE_WHEN", "unused")
 abstract class ObservableViewModel<State, UiEvent> : ViewModel(), Consumer<UiEvent> {
 
-    private val stateRelay = BehaviorRelay.create<State>()!!
-    private val uiEvents = PublishRelay.create<UiEvent>()!!
+    private val stateRelay = BehaviorRelay.create<State>()
+    private val uiEvents = PublishRelay.create<UiEvent>()
 
-    private val lifecycleRelay = BehaviorRelay.createDefault(Lifecycle.State.INITIALIZED)!!
+    private val lifecycleRelay = BehaviorRelay.createDefault(Lifecycle.State.INITIALIZED)
     private val lifecycle get() = lifecycleRelay.value!!
 
     override fun accept(uiEvent: UiEvent) {

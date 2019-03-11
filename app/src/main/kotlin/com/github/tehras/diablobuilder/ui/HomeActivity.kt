@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.github.tehras.diablobuilder.R
 import com.github.tehras.ui.leaderboards.LeaderboardsListFragment
+import com.github.tehras.ui.players.searchhistory.SearchHistoryFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
@@ -28,10 +29,15 @@ class HomeActivity : AppCompatActivity() {
             .setOnNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.menu_action_leaderboards -> startLeaderboardsFragment()
+                    R.id.menu_action_players -> startPlayersFragment()
                 }
 
                 true
             }
+    }
+
+    private fun startPlayersFragment() {
+        startFragment(SearchHistoryFragment.newInstance())
     }
 
     private fun startLeaderboardsFragment() {

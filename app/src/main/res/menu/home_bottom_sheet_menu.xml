@@ -7,4 +7,10 @@
             android:icon="@drawable/ic_menu_leaderboard"
             android:title="@string/menu_leaderboard"
     />
+    <item
+            android:id="@+id/menu_action_players"
+            android:enabled="true"
+            android:icon="@drawable/ic_menu_players"
+            android:title="@string/menu_players"
+    />
 </menu>

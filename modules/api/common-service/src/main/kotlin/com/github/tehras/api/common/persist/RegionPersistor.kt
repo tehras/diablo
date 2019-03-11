@@ -28,7 +28,7 @@ class RegionPersistor @Inject constructor(private val sharedPreferences: SharedP
     }
 }
 
-enum class Region(name: String) {
-    US("us")
+enum class Region {
+    US
 }
 

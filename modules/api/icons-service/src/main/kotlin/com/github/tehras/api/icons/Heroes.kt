@@ -1,6 +1,5 @@
 package com.github.tehras.api.icons
 
-
 fun heroIconMd(hero: String, gender: String): String {
     return heroIcon(hero, gender, AssetSizes.MD)
 }

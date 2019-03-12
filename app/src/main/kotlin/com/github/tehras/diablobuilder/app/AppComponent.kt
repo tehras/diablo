@@ -4,6 +4,7 @@ import android.app.Application
 import com.github.tehras.api.auth.AuthRetrofitModule
 import com.github.tehras.api.auth.ClientModule
 import com.github.tehras.api.leaderboards.LeaderboardsRetrofitModule
+import com.github.tehras.api.players.PlayersRetrofitModule
 import com.github.tehras.base.dagger.components.MainComponent
 import com.github.tehras.base.moshi.MoshiModule
 import com.github.tehras.base.restapi.RetrofitModule
@@ -21,7 +22,8 @@ import dagger.Component
         ClientModule::class,
         RetrofitModule::class,
         AuthRetrofitModule::class,
-        LeaderboardsRetrofitModule::class
+        LeaderboardsRetrofitModule::class,
+        PlayersRetrofitModule::class
     ]
 )
 interface AppComponent :

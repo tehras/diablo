@@ -1,6 +1,3 @@
-/*
- * Copyright (c) 2019 Evernote Corporation. All rights reserved.
- */
 package com.github.tehras.api.leaderboards
 
 import com.github.tehras.api.leaderboards.models.LeaderboardsResponse

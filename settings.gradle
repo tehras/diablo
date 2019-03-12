@@ -15,6 +15,7 @@ include ':app',
 
         ':modules:api:common-service',
         ':modules:api:leaderboards-service',
+        ':modules:api:players-service',
         ':modules:api:auth-service',
         ':modules:api:icons-service'
 

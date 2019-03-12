@@ -1,7 +1,4 @@
-/*
- * Copyright (c) 2019 Evernote Corporation. All rights reserved.
- */
-package com.github.tehras.api.leaderboards
+package com.github.tehras.api.players
 
 import com.github.tehras.api.auth.OauthClient
 import com.github.tehras.api.common.UrlResolver
@@ -14,18 +11,19 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Qualifier
 
+
 @Module
-object LeaderboardsRetrofitModule {
+object PlayersRetrofitModule {
     @Provides
     @JvmStatic
     @ApplicationScope
-    fun providesLeaderboardsService(@LeaderboardsRetrofit retrofit: Retrofit): LeaderboardsService =
-        retrofit.create(LeaderboardsService::class.java)
+    fun providePlayersRetrofit(@PlayersRetrofit retrofit: Retrofit): PlayersService =
+        retrofit.create(PlayersService::class.java)
 
     @Provides
     @JvmStatic
     @ApplicationScope
-    @LeaderboardsRetrofit
+    @PlayersRetrofit
     fun providesRetrofit(
         @OauthClient
         okHttpClient: OkHttpClient,
@@ -44,4 +42,4 @@ object LeaderboardsRetrofitModule {
 
 @Qualifier
 @Retention(AnnotationRetention.RUNTIME)
-annotation class LeaderboardsRetrofit
+annotation class PlayersRetrofit

@@ -12,8 +12,10 @@ dependencies {
     implementation deps.base.moshi
     implementation deps.base.glide
     implementation deps.base.restApi
+
     implementation deps.api.auth
     implementation deps.api.leaderboards
+    implementation deps.api.players
 
     implementation deps.ui.leaderboards
     implementation deps.ui.players

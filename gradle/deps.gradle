@@ -21,6 +21,7 @@ ext {
             api                : [
                     common      : project(':modules:api:common-service'),
                     leaderboards: project(':modules:api:leaderboards-service'),
+                    players     : project(':modules:api:players-service'),
                     auth        : project(':modules:api:auth-service'),
                     icons       : project(':modules:api:icons-service')
             ],

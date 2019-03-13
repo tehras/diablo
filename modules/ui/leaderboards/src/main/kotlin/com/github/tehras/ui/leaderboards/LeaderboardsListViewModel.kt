@@ -10,14 +10,15 @@ import com.github.tehras.api.leaderboards.LeaderboardsPersistor
 import com.github.tehras.api.leaderboards.LeaderboardsService
 import com.github.tehras.api.leaderboards.LeaderboardsType
 import com.github.tehras.base.arch.ObservableViewModel
+import com.github.tehras.base.arch.executors.NetworkExecutor
 import com.github.tehras.base.arch.rx.shareBehavior
 import com.github.tehras.ui.commonviews.bottomsheet.SelectorBottomSheet
 import com.github.tehras.ui.leaderboards.adapter.LeaderboardsBody
 import io.reactivex.Observable
+import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.withLatestFrom
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import kotlin.random.Random
 
@@ -29,7 +30,8 @@ class LeaderboardsListViewModel @Inject constructor(
     private val leaderboardsService: LeaderboardsService,
     private val dataConverter: LeaderboardsListDataConverter,
     private val leaderboardsPersistor: LeaderboardsPersistor,
-    private val seasonPersistor: SeasonPersistor
+    private val seasonPersistor: SeasonPersistor,
+    @NetworkExecutor private val networkScheduler: Scheduler
 ) :
     ObservableViewModel<LeaderboardsListState, LeaderboardsListUiEvent>() {
 
@@ -42,8 +44,8 @@ class LeaderboardsListViewModel @Inject constructor(
 
         val filterObservable = filterObservableUiEvent
             .map { it.type }
-            .subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
+            .subscribeOn(networkScheduler)
+            .observeOn(networkScheduler)
             .doOnNext {
                 leaderboardsPersistor.updateLeaderboards(it)
             }
@@ -69,7 +71,7 @@ class LeaderboardsListViewModel @Inject constructor(
             .flatMapSingle { (_, type) ->
                 leaderboardsService.getLeaderboard(seasonPersistor.currentSeason(), type.serverType)
             }
-            .subscribeOn(Schedulers.io())
+            .subscribeOn(networkScheduler)
             .map { dataConverter.convertToUiData(it) }
             .shareBehavior()
 

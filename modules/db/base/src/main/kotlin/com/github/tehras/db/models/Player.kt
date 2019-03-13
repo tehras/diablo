@@ -1,10 +1,18 @@
-package com.github.tehras.api.players.models
+package com.github.tehras.db.models
 
+import android.os.Parcelable
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
 
+@Entity(tableName = "players")
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class Player(
+    @PrimaryKey
     val battleTag: String,
     val paragonLevel: Int,
     val paragonLevelHardcore: Int,
@@ -13,12 +21,15 @@ data class Player(
     val heroes: List<Heroe>,
     val lastHeroPlayed: Long,
     val lastUpdated: Long,
+    @Embedded
     val kills: Kills,
     val highestHardcoreLevel: Int,
+    @Embedded
     val timePlayed: TimePlayed,
     val seasonalProfiles: Map<String, SeasonalProfile>
-)
+) : Parcelable
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class SeasonalProfile(
     val seasonId: Int,
@@ -27,8 +38,9 @@ data class SeasonalProfile(
     val kills: Kills,
     val timePlayed: TimePlayed,
     val highestHardcoreLevel: Int
-)
+) : Parcelable
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class Heroe(
     val id: Long,
@@ -43,15 +55,17 @@ data class Heroe(
     val seasonal: Boolean,
     val hardcore: Boolean,
     val paragonLevel: Int
-)
+) : Parcelable
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class Kills(
     val monsters: Long?,
     val elites: Long?,
     val hardcoreMonsters: Long?
-)
+) : Parcelable
 
+@Parcelize
 @JsonClass(generateAdapter = true)
 data class TimePlayed(
     @Json(name = "demon-hunter")
@@ -62,7 +76,7 @@ data class TimePlayed(
     val wizard: Double,
     val monk: Double,
     val crusader: Double
-)
+) : Parcelable
 
 fun Int.toGender() = if (this == 0) Gender.MALE else Gender.FEMALE
 

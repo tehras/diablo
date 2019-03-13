@@ -5,7 +5,3 @@ apply plugin: 'kotlin-kapt'
 androidExtensions {
     experimental = true
 }
-
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}

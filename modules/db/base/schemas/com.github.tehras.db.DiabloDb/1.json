@@ -1,0 +1,142 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "7a4870648fc82bc087b71b480e49d488",
+    "entities": [
+      {
+        "tableName": "players",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`battleTag` TEXT NOT NULL, `paragonLevel` INTEGER NOT NULL, `paragonLevelHardcore` INTEGER NOT NULL, `paragonLevelSeasonHardcore` INTEGER NOT NULL, `guildName` TEXT NOT NULL, `heroes` TEXT NOT NULL, `lastHeroPlayed` INTEGER NOT NULL, `lastUpdated` INTEGER NOT NULL, `highestHardcoreLevel` INTEGER NOT NULL, `seasonalProfiles` TEXT NOT NULL, `monsters` INTEGER, `elites` INTEGER, `hardcoreMonsters` INTEGER, `demonHunter` REAL NOT NULL, `witchDoctor` REAL NOT NULL, `necromancer` REAL NOT NULL, `wizard` REAL NOT NULL, `monk` REAL NOT NULL, `crusader` REAL NOT NULL, PRIMARY KEY(`battleTag`))",
+        "fields": [
+          {
+            "fieldPath": "battleTag",
+            "columnName": "battleTag",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragonLevel",
+            "columnName": "paragonLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragonLevelHardcore",
+            "columnName": "paragonLevelHardcore",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragonLevelSeasonHardcore",
+            "columnName": "paragonLevelSeasonHardcore",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guildName",
+            "columnName": "guildName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heroes",
+            "columnName": "heroes",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastHeroPlayed",
+            "columnName": "lastHeroPlayed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastUpdated",
+            "columnName": "lastUpdated",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "highestHardcoreLevel",
+            "columnName": "highestHardcoreLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seasonalProfiles",
+            "columnName": "seasonalProfiles",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kills.monsters",
+            "columnName": "monsters",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "kills.elites",
+            "columnName": "elites",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "kills.hardcoreMonsters",
+            "columnName": "hardcoreMonsters",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timePlayed.demonHunter",
+            "columnName": "demonHunter",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.witchDoctor",
+            "columnName": "witchDoctor",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.necromancer",
+            "columnName": "necromancer",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.wizard",
+            "columnName": "wizard",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.monk",
+            "columnName": "monk",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.crusader",
+            "columnName": "crusader",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "battleTag"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"7a4870648fc82bc087b71b480e49d488\")"
+    ]
+  }
+}

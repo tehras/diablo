@@ -46,7 +46,7 @@ class LeaderboardsListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        findComponent<LeaderboardsListComponentCeator>()
+        findComponent<LeaderboardsListComponentCreator>()
             .plusLeaderboardsListComponent()
             .inject(this)
     }

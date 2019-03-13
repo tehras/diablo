@@ -3,6 +3,7 @@ ext {
     def daggerVer = "2.21"
     def retrofitVer = "2.5.0"
     def moshiVer = "1.8.0"
+    def roomVer = "2.1.0-alpha04"
     def glideVer = '4.8.0'
     def archVer = '2.0.0'
     def appCenterSdkVersion = '1.11.3'
@@ -17,6 +18,9 @@ ext {
                     ext    : project(':modules:base:extensions'),
                     glide  : project(':modules:base:glide'),
                     restApi: project(':modules:base:rest-api')
+            ],
+            db                 : [
+                    room: project(':modules:db:base'),
             ],
             api                : [
                     common      : project(':modules:api:common-service'),
@@ -78,6 +82,10 @@ ext {
             moshi              : "com.squareup.moshi:moshi:$moshiVer",
             moshiKotlin        : "com.squareup.moshi:moshi-kotlin:$moshiVer",
             moshiApt           : "com.squareup.moshi:moshi-kotlin-codegen:$moshiVer",
+
+            room               : "androidx.room:room-runtime:$roomVer",
+            roomApt            : "androidx.room:room-compiler:$roomVer",
+            roomRx             : "androidx.room:room-rxjava2:$roomVer",
 
             appCenterAnalytics : "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}",
             appCenterCrashes   : "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}",

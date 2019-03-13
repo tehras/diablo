@@ -1,6 +1,6 @@
 package com.github.tehras.api.players
 
-import com.github.tehras.api.players.models.Player
+import com.github.tehras.db.models.Player
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,5 +12,5 @@ interface PlayersService {
     fun getPlayer(
         @Path(value = "battle_tag") battleTag: String,
         @Query(value = "locale") locale: String = Locale.US.toString()
-    ): Single<Player>
+    ): Single<com.github.tehras.db.models.Player>
 }

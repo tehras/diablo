@@ -27,6 +27,6 @@ interface LeaderboardsListComponent {
     fun inject(fragment: LeaderboardsListFragment)
 }
 
-interface LeaderboardsListComponentCeator : SubComponentCreator {
+interface LeaderboardsListComponentCreator : SubComponentCreator {
     fun plusLeaderboardsListComponent(): LeaderboardsListComponent
 }

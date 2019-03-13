@@ -1,6 +1,7 @@
 apply from: "$rootDir/gradle/libs-ui.gradle"
 apply from: "$rootDir/gradle/retrofit.gradle"
 apply from: "$rootDir/gradle/glide.gradle"
+apply from: "$rootDir/gradle/db.gradle"
 
 android {
     resourcePrefix 'players_'

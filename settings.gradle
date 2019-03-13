@@ -13,6 +13,8 @@ include ':app',
         ':modules:base:glide',
         ':modules:base:rest-api',
 
+        ':modules:db:base',
+
         ':modules:api:common-service',
         ':modules:api:leaderboards-service',
         ':modules:api:players-service',

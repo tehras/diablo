@@ -14,8 +14,13 @@ import dagger.multibindings.IntoMap
 abstract class SearchHistoryFragmentModule {
     @Binds
     @IntoMap
-    @ViewModelKey(SearchHistoryViewModel::class)
-    abstract fun bindSearchHistoryViewModel(leaderboardsListViewModel: SearchHistoryViewModel): ViewModel
+    @ViewModelKey(SearchHistorySearchViewModel::class)
+    abstract fun bindSearchHistorySearchViewModel(searchHistoryViewModel: SearchHistorySearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchHistoryPlayersListViewModel::class)
+    abstract fun bindSearchHistoryPlayersListViewModel(playersListViewModel: SearchHistoryPlayersListViewModel): ViewModel
 }
 
 @FragmentScope

@@ -2,4 +2,7 @@
 <resources>
     <string name="players_player_avatar">Player Avatar</string>
     <string name="players_recent_searches">Recent Searches</string>
+    <string name="players_paragon_lvl">Paragon Lvl</string>
+    <string name="players_clan_label">Clan</string>
+    <string name="players_kills">Kills</string>
 </resources>

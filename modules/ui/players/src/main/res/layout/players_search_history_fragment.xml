@@ -10,7 +10,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
-            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_marginTop="@dimen/default_padding"
             style="@style/Base.TextAppearance.AppCompat.Medium"
             android:textColor="?typePrimary"
             android:id="@+id/players_list_title"
@@ -18,10 +18,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 
+    <LinearLayout
+            android:background="?typePrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/players_list_title"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_width="0dp"
+            android:layout_height="1dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_marginTop="@dimen/default_padding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/players_list_title"
             android:layout_width="0dp"

@@ -11,7 +11,6 @@ import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.withLatestFrom
-import timber.log.Timber
 import javax.inject.Inject
 
 class SearchHistorySearchViewModel @Inject constructor(
@@ -37,14 +36,13 @@ class SearchHistorySearchViewModel @Inject constructor(
                 playersService
                     .getPlayer(searchText)
                     .subscribeOn(networkScheduler)
+                    .doOnSuccess(::savePlayer)
+                    .map { SearchResult.Success(it) as SearchResult }
+                    .onErrorReturn {
+                        SearchResult.Error
+                    }
             }
-            .doOnNext(::savePlayer)
-            .map { SearchResult.Success(it) as SearchResult }
             .startWith(SearchResult.NoResult)
-            .onErrorReturn {
-                Timber.e(it)
-                SearchResult.Error
-            }
 
         searchResultObservable
             .map { SearchHistoryState(it) }

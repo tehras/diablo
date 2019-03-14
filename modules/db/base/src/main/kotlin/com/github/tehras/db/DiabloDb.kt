@@ -9,7 +9,7 @@ import com.github.tehras.db.converters.PlayerConverters
 import com.github.tehras.db.dao.PlayersDao
 import com.github.tehras.db.models.Player
 
-@Database(entities = [Player::class], version = 1)
+@Database(entities = [Player::class], version = 2)
 @TypeConverters(value = [PlayerConverters::class])
 abstract class DiabloDb : RoomDatabase() {
 

@@ -4,6 +4,10 @@ fun heroIconMd(hero: String, gender: String): String {
     return heroIcon(hero, gender, AssetSizes.MD)
 }
 
+fun heroIconLg(hero: String, gender: String): String {
+    return heroIcon(hero, gender, AssetSizes.LG)
+}
+
 private fun heroIcon(hero: String, gender: String, size: AssetSizes): String {
     return ASSET_URL
         .replace(":type:", "portraits")

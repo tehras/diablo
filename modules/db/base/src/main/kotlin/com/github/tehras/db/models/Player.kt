@@ -73,6 +73,7 @@ data class TimePlayed(
     @Json(name = "witch-doctor")
     val witchDoctor: Double,
     val necromancer: Double,
+    val barbarian: Double,
     val wizard: Double,
     val monk: Double,
     val crusader: Double
@@ -80,5 +81,16 @@ data class TimePlayed(
 
 fun Int.toGender() = if (this == 0) Gender.MALE else Gender.FEMALE
 
-enum class Gender { MALE, FEMALE }
+enum class Gender {
+    MALE, FEMALE;
 
+    companion object {
+        fun random(): Gender {
+            return if (Math.random() < 0.5) {
+                return MALE
+            } else {
+                FEMALE
+            }
+        }
+    }
+}

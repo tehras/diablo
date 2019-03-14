@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="demon_hunter">#744da4</color>
+    <color name="barbarian">#ed7436</color>
+    <color name="witch_doctor">#ccf868</color>
+    <color name="necromancer">#245549</color>
+    <color name="wizard">#3a61af</color>
+    <color name="monk">#a49a68</color>
+    <color name="crusader">#de8461</color>
+</resources>

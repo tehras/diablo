@@ -71,17 +71,6 @@ class LeaderboardsListDataConverter @Inject constructor() {
 
         return "$clan$name"
     }
-//
-//    @VisibleForTesting
-//    fun rank(type: LeaderboardsType, data: String?): String {
-//        val factor = when (type) {
-//            LeaderboardsType.DUOS -> 2
-//            LeaderboardsType.THREES -> 3
-//            LeaderboardsType.QUADS -> 4
-//            else -> 1
-//        }
-//        return data?.toIntOrNull()?.div(factor)?.plus(1)?.toString() ?: "N/A"
-//    }
 }
 
 @VisibleForTesting

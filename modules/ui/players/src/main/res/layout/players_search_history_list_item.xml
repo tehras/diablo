@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        android:padding="@dimen/default_padding"
-        android:layout_width="match_parent" android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <ImageView
             app:layout_constraintStart_toStartOf="parent"
@@ -11,20 +11,107 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/search_history_player_avatar"
             android:layout_width="@dimen/players_avatar_size"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
             android:layout_height="@dimen/players_avatar_size"
             android:contentDescription="@string/players_player_avatar"/>
 
     <TextView
             android:id="@+id/search_history_player_name"
             app:layout_constraintStart_toEndOf="@+id/search_history_player_avatar"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/search_history_paragon_level"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="0dp"
             tools:text="TehRaS#1659"
+            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
             style="@style/Base.TextAppearance.AppCompat.Title"
             android:textStyle="bold"
             android:layout_marginStart="@dimen/default_padding"
             android:textColor="?typePrimary"
             android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/search_history_player_clan"
+            style="@style/Base.TextAppearance.AppCompat.Small"
+            tools:text="Flawless"
+            android:textColor="?typePrimary"
+            android:layout_marginStart="4dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/search_history_player_clan_label"
+            app:layout_constraintTop_toTopOf="@+id/search_history_player_clan_label"
+            app:layout_constraintBottom_toBottomOf="@+id/search_history_player_clan_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/search_history_player_clan_label"
+            style="@style/Base.TextAppearance.AppCompat.Caption"
+            android:text="@string/players_clan_label"
+            android:textColor="?typeSecondary"
+            app:layout_constraintBottom_toTopOf="@+id/search_history_player_kills_label"
+            app:layout_constraintStart_toStartOf="@+id/search_history_player_name"
+            app:layout_constraintTop_toBottomOf="@+id/search_history_player_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/search_history_player_kills"
+            style="@style/Base.TextAppearance.AppCompat.Small"
+            tools:text="109015 / 8089"
+            android:textColor="?typePrimary"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/search_history_player_clan"
+            app:layout_constraintBottom_toBottomOf="@+id/search_history_player_kills_label"
+            app:layout_constraintTop_toTopOf="@+id/search_history_player_kills_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/search_history_player_kills_label"
+            style="@style/Base.TextAppearance.AppCompat.Caption"
+            android:text="@string/players_kills"
+            android:layout_marginBottom="@dimen/default_padding"
+            android:layout_marginTop="2dp"
+            android:textColor="?typeSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/search_history_player_name"
+            app:layout_constraintTop_toBottomOf="@+id/search_history_player_clan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/search_history_paragon_level"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="509"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="@dimen/default_padding"
+            android:padding="4dp"
+            android:textStyle="bold"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="?typePrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            app:layout_constraintEnd_toStartOf="@id/search_history_paragon_level"
+            app:layout_constraintTop_toTopOf="@id/search_history_paragon_level"
+            app:layout_constraintBottom_toBottomOf="@id/search_history_paragon_level"
+            android:layout_marginEnd="4dp"
+            android:text="@string/players_paragon_lvl"
+            style="@style/Base.TextAppearance.AppCompat.Caption"
+            android:textColor="?typeSecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <com.github.tehras.ui.commonviews.views.MultiColorBar
+            android:layout_width="0dp"
+            android:id="@+id/search_history_player_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="@dimen/players_bar_height"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

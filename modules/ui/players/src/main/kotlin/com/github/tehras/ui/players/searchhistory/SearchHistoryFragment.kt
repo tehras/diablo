@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.tehras.base.arch.rx.shareBehavior
 import com.github.tehras.base.arch.viewModel
 import com.github.tehras.base.dagger.components.findComponent
+import com.github.tehras.db.models.Player
 import com.github.tehras.ui.commonviews.animations.slideInBottom
 import com.github.tehras.ui.commonviews.views.SearchEvent
 import com.github.tehras.ui.players.R
@@ -22,6 +24,11 @@ import io.reactivex.rxkotlin.plusAssign
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.players_search_history_fragment.*
 import javax.inject.Inject
+import androidx.recyclerview.widget.ItemTouchHelper
+import com.github.tehras.base.ext.animation.onAnimStart
+import com.github.tehras.ui.players.searchhistory.adapter.SearchHistorySwipeHelper
+import kotlinx.android.synthetic.main.players_search_history_empty.*
+
 
 class SearchHistoryFragment : Fragment() {
     companion object {
@@ -85,7 +92,21 @@ class SearchHistoryFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .filter { !it.isLoading }
             .map { it.players }
+            .doOnNext { handleEmptyLayout(it) }
             .subscribe(playersAdapter)
+    }
+
+    private fun handleEmptyLayout(players: List<Player>) {
+        if (players.isEmpty() && !players_search_empty.isVisible) {
+            players_search_empty.isVisible = true
+            players_search_no_players_text.alpha = 0f
+            players_search_no_players_text.animate().alpha(1f).start()
+
+            players_search_no_players_icon.alpha = 0f
+            players_search_no_players_icon.animate().alpha(1f).start()
+        } else {
+            players_search_empty.isVisible = false
+        }
     }
 
     private fun initPlayersList() {
@@ -93,6 +114,10 @@ class SearchHistoryFragment : Fragment() {
             adapter = playersAdapter
             layoutManager = LinearLayoutManager(context)
             itemAnimator = SlideInUpAnimator()
+            ItemTouchHelper(SearchHistorySwipeHelper(playersVm, context))
+                .apply {
+                    attachToRecyclerView(this@run)
+                }
         }
     }
 

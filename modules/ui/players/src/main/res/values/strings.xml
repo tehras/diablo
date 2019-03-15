@@ -5,4 +5,7 @@
     <string name="players_paragon_lvl">Paragon Lvl</string>
     <string name="players_clan_label">Clan</string>
     <string name="players_kills">Kills</string>
+    <string name="players_search_empty_text">Search for a player and they\'ll be automatically added to the recent
+        players history
+    </string>
 </resources>

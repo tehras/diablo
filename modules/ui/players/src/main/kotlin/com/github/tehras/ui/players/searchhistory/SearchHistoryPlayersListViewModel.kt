@@ -2,9 +2,13 @@ package com.github.tehras.ui.players.searchhistory
 
 import com.github.tehras.base.arch.ObservableViewModel
 import com.github.tehras.base.arch.executors.DbExectutor
+import com.github.tehras.base.arch.rx.shareBehavior
 import com.github.tehras.db.dao.PlayersDao
 import com.github.tehras.db.models.Player
 import io.reactivex.Scheduler
+import io.reactivex.rxkotlin.ofType
+import io.reactivex.rxkotlin.withLatestFrom
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class SearchHistoryPlayersListViewModel @Inject constructor(
@@ -12,8 +16,24 @@ class SearchHistoryPlayersListViewModel @Inject constructor(
     private val playersDao: PlayersDao
 ) : ObservableViewModel<SearchHistoryPlayersState, SearchHistoryPlayersUiEvent>() {
     override fun onCreate() {
-        playersDao
+        val playersObservable = playersDao
             .getAll()
+            .shareBehavior()
+
+        uiEvents()
+            .ofType<SearchHistoryPlayersUiEvent.RemoveFromRecent>()
+            .withLatestFrom(playersObservable)
+            .map { (remove, players) ->
+                players[remove.position]
+            }
+            .flatMapCompletable {
+                playersDao
+                    .delete(it)
+                    .subscribeOn(dbExectutor)
+            }
+            .subscribe()
+
+        playersObservable
             .subscribeOn(dbExectutor)
             .map { SearchHistoryPlayersState(players = it, isLoading = false) }
             .startWith(SearchHistoryPlayersState(listOf(), true))
@@ -26,4 +46,7 @@ data class SearchHistoryPlayersState(
     val isLoading: Boolean
 )
 
-class SearchHistoryPlayersUiEvent
+sealed class SearchHistoryPlayersUiEvent {
+    data class RemoveFromRecent(val position: Int) : SearchHistoryPlayersUiEvent()
+    data class FavoriteRecent(val position: Int) : SearchHistoryPlayersUiEvent()
+}

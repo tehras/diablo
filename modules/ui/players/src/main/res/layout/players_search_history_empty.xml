@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:padding="@dimen/default_padding"
+        android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/players_search_no_players_icon"
+            android:layout_width="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="80dp"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="empty.json"
+            android:contentDescription="@string/players_search_empty_text"
+    />
+
+    <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/players_search_empty_text"
+            android:layout_margin="@dimen/default_padding"
+            android:id="@+id/players_search_no_players_text"
+            android:gravity="center"
+            android:textColor="?typePrimary"
+            app:layout_constraintTop_toBottomOf="@+id/players_search_no_players_icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

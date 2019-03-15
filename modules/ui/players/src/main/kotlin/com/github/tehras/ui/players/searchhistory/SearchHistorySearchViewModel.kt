@@ -11,6 +11,7 @@ import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.withLatestFrom
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class SearchHistorySearchViewModel @Inject constructor(
@@ -46,6 +47,7 @@ class SearchHistorySearchViewModel @Inject constructor(
 
         searchResultObservable
             .map { SearchHistoryState(it) }
+            .subscribeOn(networkScheduler)
             .subscribeUntilDestroyed()
     }
 

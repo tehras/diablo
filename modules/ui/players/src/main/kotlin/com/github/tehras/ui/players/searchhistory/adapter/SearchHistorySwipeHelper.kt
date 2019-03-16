@@ -6,15 +6,15 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
-import com.github.tehras.ui.players.R
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.github.tehras.ui.players.R
 import com.github.tehras.ui.players.searchhistory.SearchHistoryPlayersUiEvent
 import io.reactivex.functions.Consumer
 import kotlin.math.roundToInt
 
 
-class SearchHistorySwipeHelper(val handler: Consumer<SearchHistoryPlayersUiEvent>, context: Context) :
+class SearchHistorySwipeHelper(private val handler: Consumer<SearchHistoryPlayersUiEvent>, context: Context) :
     ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 
     private val iconDelete by lazy { ContextCompat.getDrawable(context, R.drawable.players_ic_remove)!! }
@@ -67,13 +67,26 @@ class SearchHistorySwipeHelper(val handler: Consumer<SearchHistoryPlayersUiEvent
         val iconMargin = (itemView.height - icon.intrinsicHeight) / 2
         val iconTop = itemView.top + (itemView.height - icon.intrinsicHeight) / 2
         val iconBottom = iconTop + icon.intrinsicHeight
+        var drawIcon = true
 
         when {
             dX > 0 -> { // Swiping to the right
                 val iconLeft = itemView.left + iconMargin
                 val iconRight = itemView.left + iconMargin + icon.intrinsicWidth
 
-                icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                if (dX > iconLeft && dX < iconRight) {
+                    val percentage = (dX - iconLeft) / (iconRight - iconLeft)
+                    val heightOffset = ((iconTop - iconBottom).div(2)).times(1f - percentage).roundToInt()
+
+                    icon.setBounds(
+                        iconLeft, iconTop - heightOffset, dX.roundToInt(), iconBottom + heightOffset
+                    )
+                } else if (dX > iconRight) {
+                    icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                } else {
+                    drawIcon = false
+                }
+
                 background.setBounds(
                     itemView.left, itemView.top,
                     (itemView.left + dX).roundToInt(),
@@ -83,23 +96,30 @@ class SearchHistorySwipeHelper(val handler: Consumer<SearchHistoryPlayersUiEvent
             dX < 0 -> { // Swiping to the left
                 val iconLeft = itemView.right - iconMargin - icon.intrinsicWidth
                 val iconRight = itemView.right - iconMargin
+                val currentSwipe = (dX + itemView.right)
 
-                icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
-                background.setBounds(
-                    (itemView.right + dX).roundToInt(),
-                    itemView.top, itemView.right, itemView.bottom
-                )
+                if (currentSwipe > iconLeft && currentSwipe < iconRight) {
+                    val percentage = (iconRight - currentSwipe) / (iconRight - iconLeft)
+                    val heightOffset = ((iconTop - iconBottom).div(2)).times(1f - percentage).roundToInt()
+
+                    icon.setBounds(
+                        currentSwipe.roundToInt(), iconTop - heightOffset, iconRight, iconBottom + heightOffset
+                    )
+                    drawIcon = true
+                } else if (currentSwipe < iconLeft) {
+                    icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+                    drawIcon = true
+                } else {
+                    drawIcon = false
+                }
+
+                background.setBounds(currentSwipe.roundToInt(), itemView.top, itemView.right, itemView.bottom)
             }
             else -> // view is unSwiped
                 background.setBounds(0, 0, 0, 0)
         }
 
         background.draw(c)
-        icon.draw(c)
-    }
-
-    interface SearchHistorySwipeHandler {
-        fun onDelete(position: Int)
-        fun onFavorite(position: Int)
+        if (drawIcon) icon.draw(c)
     }
 }

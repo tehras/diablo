@@ -6,6 +6,7 @@ import com.github.tehras.api.auth.ClientModule
 import com.github.tehras.api.leaderboards.LeaderboardsRetrofitModule
 import com.github.tehras.api.players.PlayersRetrofitModule
 import com.github.tehras.base.arch.executors.ExecutorsModule
+import com.github.tehras.base.arch.rx.GlobalBusModule
 import com.github.tehras.base.dagger.components.MainComponent
 import com.github.tehras.base.moshi.MoshiModule
 import com.github.tehras.base.restapi.RetrofitModule
@@ -27,12 +28,15 @@ import dagger.Component
         AuthRetrofitModule::class,
         LeaderboardsRetrofitModule::class,
         PlayersRetrofitModule::class,
-        DatabaseModule::class
+        DatabaseModule::class,
+        GlobalBusModule::class
     ]
 )
 interface AppComponent :
     MainComponent,
-    UiComponents {
+    UiComponents,
+    Injectors
+{
 
     fun plusApplication(application: DiabloApplication)
 

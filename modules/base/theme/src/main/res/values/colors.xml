@@ -3,7 +3,7 @@
     <!-- Colors for the LIGHT Theme -->
     <color name="app_bar_light">@color/primary_color_light_light</color>
     <color name="bg_primary_light">@color/primary_color_light_light</color>
-    <color name="bg_secondary_light">@color/primary_color_dark_light</color>
+    <color name="bg_secondary_light">@color/primary_color_light</color>
     <color name="bg_primary_light_transparent">#99ffffff</color>
     <color name="type_primary_light">#212121</color>
     <color name="type_secondary_light">#616161</color>

@@ -15,4 +15,7 @@ interface PlayersDao {
 
     @Query("SELECT * FROM players")
     fun getAll(): Observable<List<Player>>
+
+    @Query("SELECT * FROM players WHERE battleTag IS :battleTag")
+    fun getBy(battleTag: String): Observable<Player>
 }

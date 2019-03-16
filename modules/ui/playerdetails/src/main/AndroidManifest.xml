@@ -1,0 +1,3 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.github.tehras.ui.playerdetails">
+    <application android:supportsRtl="true"/>
+</manifest>

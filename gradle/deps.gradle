@@ -30,9 +30,10 @@ ext {
                     icons       : project(':modules:api:icons-service')
             ],
             ui                 : [
-                    leaderboards: project(':modules:ui:leaderboards'),
-                    players     : project(':modules:ui:players'),
-                    commonviews : project(':modules:ui:common-views')
+                    leaderboards : project(':modules:ui:leaderboards'),
+                    players      : project(':modules:ui:players'),
+                    playerdetails: project(':modules:ui:playerdetails'),
+                    commonviews  : project(':modules:ui:common-views')
             ],
             test               : [
                     junit: 'junit:junit:4.12',

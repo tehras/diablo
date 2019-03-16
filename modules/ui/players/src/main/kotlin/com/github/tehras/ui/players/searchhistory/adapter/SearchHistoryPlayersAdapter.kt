@@ -3,11 +3,13 @@ package com.github.tehras.ui.players.searchhistory.adapter
 import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.github.tehras.api.icons.heroIconLg
+import com.github.tehras.base.ext.kotlin.format
 import com.github.tehras.base.ext.views.viewHolderFromParent
 import com.github.tehras.base.glide.GlideApp
 import com.github.tehras.db.models.Gender
@@ -16,6 +18,8 @@ import com.github.tehras.db.models.Player
 import com.github.tehras.db.models.fromHero
 import com.github.tehras.ui.commonviews.views.MultiColorBar
 import com.github.tehras.ui.players.R
+import com.github.tehras.ui.players.searchhistory.SearchHistoryUiEvent
+import com.jakewharton.rxbinding3.view.clicks
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -24,9 +28,10 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.players_search_history_list_item.*
-import java.text.NumberFormat
+import java.util.concurrent.TimeUnit
 
-class SearchHistoryPlayersAdapter : RecyclerView.Adapter<SearchHistoryPlayersViewHolder>(), Consumer<List<Player>> {
+class SearchHistoryPlayersAdapter(private val playerConsumer: Consumer<SearchHistoryUiEvent>) :
+    RecyclerView.Adapter<SearchHistoryPlayersViewHolder>(), Consumer<List<Player>> {
     private val players: MutableList<Player> = mutableListOf()
     private var disposable: Disposable? = null
 
@@ -49,7 +54,10 @@ class SearchHistoryPlayersAdapter : RecyclerView.Adapter<SearchHistoryPlayersVie
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchHistoryPlayersViewHolder {
-        return SearchHistoryPlayersViewHolder(parent.viewHolderFromParent(R.layout.players_search_history_list_item))
+        return SearchHistoryPlayersViewHolder(
+            parent.viewHolderFromParent(R.layout.players_search_history_list_item),
+            playerConsumer
+        )
     }
 
     override fun getItemCount(): Int = players.size
@@ -59,8 +67,11 @@ class SearchHistoryPlayersAdapter : RecyclerView.Adapter<SearchHistoryPlayersVie
 
 }
 
-class SearchHistoryPlayersViewHolder(override val containerView: View) :
-    RecyclerView.ViewHolder(containerView), LayoutContainer {
+class SearchHistoryPlayersViewHolder(
+    override val containerView: View,
+    private val playerClickConsumer: Consumer<SearchHistoryUiEvent>
+) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    private var disposable: Disposable? = null
     private val cornerRadius by lazy {
         containerView.resources.getDimensionPixelSize(R.dimen.players_avatar_size).div(2)
     }
@@ -72,21 +83,21 @@ class SearchHistoryPlayersViewHolder(override val containerView: View) :
         search_history_player_clan.text = if (player.guildName.isEmpty()) "None" else player.guildName
         search_history_paragon_level.text = "${player.paragonLevel}"
 
-        populateAvatar(player)
+        search_history_player_avatar.populateAvatar(player)
         populateSections(player)
+
+        disposable?.dispose()
+        disposable = players_search_container
+            .clicks()
+            .throttleFirst(200, TimeUnit.MILLISECONDS)
+            .map { SearchHistoryUiEvent.Selected(player.battleTag) }
+            .subscribe(playerClickConsumer)
     }
 
-    fun Long?.format(): String {
-        if (this == null) return "0"
-
-        return NumberFormat
-            .getNumberInstance()
-            .format(this)
-    }
-
-    private fun populateAvatar(player: Player) {
+    private fun ImageView.populateAvatar(player: Player) {
         var highestHero = 0.0
         var highestHeroeClass: HeroeClass? = null
+
         HeroeClass
             .values()
             .forEach {
@@ -100,10 +111,10 @@ class SearchHistoryPlayersViewHolder(override val containerView: View) :
         val icon = heroIconLg(highestHeroeClass?.iconName ?: "", Gender.random().toString().toLowerCase())
 
         GlideApp
-            .with(containerView.context)
+            .with(context)
             .load(icon)
             .transforms(RoundedCorners(cornerRadius), CenterCrop())
-            .into(search_history_player_avatar)
+            .into(this)
     }
 
     private fun populateSections(player: Player) {

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.tehras.base.arch.rx.shareBehavior
 import com.github.tehras.base.arch.viewModel
@@ -17,17 +18,15 @@ import com.github.tehras.ui.commonviews.animations.slideInBottom
 import com.github.tehras.ui.commonviews.views.SearchEvent
 import com.github.tehras.ui.players.R
 import com.github.tehras.ui.players.searchhistory.adapter.SearchHistoryPlayersAdapter
+import com.github.tehras.ui.players.searchhistory.adapter.SearchHistorySwipeHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.plusAssign
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
+import kotlinx.android.synthetic.main.players_search_history_empty.*
 import kotlinx.android.synthetic.main.players_search_history_fragment.*
 import javax.inject.Inject
-import androidx.recyclerview.widget.ItemTouchHelper
-import com.github.tehras.base.ext.animation.onAnimStart
-import com.github.tehras.ui.players.searchhistory.adapter.SearchHistorySwipeHelper
-import kotlinx.android.synthetic.main.players_search_history_empty.*
 
 
 class SearchHistoryFragment : Fragment() {
@@ -42,7 +41,7 @@ class SearchHistoryFragment : Fragment() {
 
     private val createDisposables: CompositeDisposable = CompositeDisposable()
 
-    private val playersAdapter by lazy { SearchHistoryPlayersAdapter() }
+    private val playersAdapter by lazy { SearchHistoryPlayersAdapter(searchVm) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,8 +79,8 @@ class SearchHistoryFragment : Fragment() {
         createDisposables += searchState
             .map { it.result }
             .distinctUntilChanged()
-            .filter { it != SearchResult.NoResult }
-            .subscribe(::searchResult)
+            .ofType(SearchResult.Error::class.java)
+            .subscribe(::searchResultError)
     }
 
     private fun handlePlayersList() {
@@ -121,12 +120,11 @@ class SearchHistoryFragment : Fragment() {
         }
     }
 
-    private fun searchResult(result: SearchResult) {
+    private fun searchResultError(result: SearchResult.Error) {
         when (result) {
-            SearchResult.Error -> Toast.makeText(requireContext(), "Error searching", Toast.LENGTH_LONG).show()
-            is SearchResult.Success -> Toast.makeText(
+            SearchResult.Error -> Toast.makeText(
                 requireContext(),
-                "Player found :: ${result.player.battleTag}",
+                "No player found, please try again",
                 Toast.LENGTH_LONG
             ).show()
         }

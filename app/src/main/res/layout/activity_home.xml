@@ -29,4 +29,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/home_bottom_sheet_menu"/>
 
+    <FrameLayout
+            android:id="@+id/home_fragment_full_container"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:elevation="@dimen/elevation_large"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="0dp"
+    />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

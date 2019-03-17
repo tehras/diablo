@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.tehras.ui.players.R
 import com.github.tehras.ui.players.searchhistory.SearchHistoryPlayersUiEvent
 import io.reactivex.functions.Consumer
+import timber.log.Timber
 import kotlin.math.roundToInt
 
 
@@ -105,10 +106,8 @@ class SearchHistorySwipeHelper(private val handler: Consumer<SearchHistoryPlayer
                     icon.setBounds(
                         currentSwipe.roundToInt(), iconTop - heightOffset, iconRight, iconBottom + heightOffset
                     )
-                    drawIcon = true
                 } else if (currentSwipe < iconLeft) {
                     icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
-                    drawIcon = true
                 } else {
                     drawIcon = false
                 }
@@ -116,10 +115,14 @@ class SearchHistorySwipeHelper(private val handler: Consumer<SearchHistoryPlayer
                 background.setBounds(currentSwipe.roundToInt(), itemView.top, itemView.right, itemView.bottom)
             }
             else -> // view is unSwiped
-                background.setBounds(0, 0, 0, 0)
+                drawIcon = false
         }
 
         background.draw(c)
         if (drawIcon) icon.draw(c)
+        else {
+            icon.setBounds(0, 0, 0, 0)
+            icon.draw(c)
+        }
     }
 }

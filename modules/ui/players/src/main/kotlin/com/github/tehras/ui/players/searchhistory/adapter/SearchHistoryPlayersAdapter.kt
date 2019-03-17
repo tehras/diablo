@@ -16,7 +16,7 @@ import com.github.tehras.db.models.Gender
 import com.github.tehras.db.models.HeroeClass
 import com.github.tehras.db.models.Player
 import com.github.tehras.db.models.fromHero
-import com.github.tehras.ui.commonviews.views.MultiColorBar
+import com.github.tehras.ui.commonviews.views.MultiColorLayout
 import com.github.tehras.ui.players.R
 import com.github.tehras.ui.players.searchhistory.SearchHistoryUiEvent
 import com.jakewharton.rxbinding3.view.clicks
@@ -121,9 +121,9 @@ class SearchHistoryPlayersViewHolder(
         val sections =
             HeroeClass
                 .values()
-                .map { MultiColorBar.Section(player.timePlayed.fromHero(it), it.color) }
+                .map { MultiColorLayout.Section(player.timePlayed.fromHero(it), it.color) }
 
-        search_history_player_bar.setSections(sections)
+        search_history_wrapper_outline.setSections(sections)
     }
 }
 

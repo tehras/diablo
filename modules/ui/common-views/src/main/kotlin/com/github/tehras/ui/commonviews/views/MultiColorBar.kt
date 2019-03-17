@@ -4,40 +4,16 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.view.View
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
 
 
 class MultiColorBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr) {
-    private val sections: MutableList<ConvertedSection> = mutableListOf()
+) : MultiColorLayout(context, attrs, defStyleAttr) {
     private val paint: Paint = Paint().apply {
         style = Paint.Style.FILL
-
     }
 
-    fun setSections(sections: List<Section>) {
-        // get total
-        var total = 0.0
-        sections.forEach {
-            total += it.size
-        }
-
-        this.sections.clear()
-        this.sections.addAll(
-            sections
-                .map {
-                    @Suppress("DEPRECATION")
-                    ConvertedSection(it.size.div(total), context.resources.getColor(it.color))
-                }
-        )
-
-        invalidate()
-    }
-
-    override fun onDraw(canvas: Canvas) {
+    override fun drawColors(canvas: Canvas) {
         if (sections.isEmpty()) return
 
         var startX = 0f //start from left
@@ -60,7 +36,4 @@ class MultiColorBar @JvmOverloads constructor(
             startX += lengthX.toFloat()
         }
     }
-
-    data class Section(val size: Double, @ColorRes val color: Int)
-    private class ConvertedSection(val percentage: Double, @ColorInt val color: Int)
 }

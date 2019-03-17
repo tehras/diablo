@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.tehras.base.arch.rx.shareBehavior
@@ -113,6 +114,7 @@ class SearchHistoryFragment : Fragment() {
             adapter = playersAdapter
             layoutManager = LinearLayoutManager(context)
             itemAnimator = SlideInUpAnimator()
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             ItemTouchHelper(SearchHistorySwipeHelper(playersVm, context))
                 .apply {
                     attachToRecyclerView(this@run)

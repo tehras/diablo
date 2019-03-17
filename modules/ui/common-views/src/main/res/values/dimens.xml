@@ -2,4 +2,5 @@
 <resources>
     <dimen name="common_views_selector_item_icon_size">32dp</dimen>
     <dimen name="common_views_rounded_corners">24dp</dimen>
+    <dimen name="common_views_color_wheel_width">3dp</dimen>
 </resources>

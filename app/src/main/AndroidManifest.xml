@@ -25,7 +25,9 @@
             tools:ignore="GoogleAppIndexingWarning"
             tools:targetApi="n">
 
-        <activity android:name=".ui.HomeActivity"/>
+        <activity android:name=".ui.HomeActivity"
+                  android:theme="@style/Theme.Diablo.DayNight.NoActionBar"
+        />
         <activity android:name=".ui.SplashScreen"
                   android:theme="@style/SplashScreen">
             <intent-filter>

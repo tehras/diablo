@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.tehras.ui.players.R
 import com.github.tehras.ui.players.searchhistory.SearchHistoryPlayersUiEvent
 import io.reactivex.functions.Consumer
-import timber.log.Timber
 import kotlin.math.roundToInt
 
 

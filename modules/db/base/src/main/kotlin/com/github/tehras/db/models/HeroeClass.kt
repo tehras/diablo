@@ -3,14 +3,14 @@ package com.github.tehras.db.models
 import androidx.annotation.ColorRes
 import com.github.tehras.db.base.R
 
-enum class HeroeClass(@ColorRes val color: Int, val iconName: String) {
-    DEMON_HUNTER(R.color.demon_hunter, "demon hunter"),
-    BARBARIAN(R.color.barbarian, "barbarian"),
-    WITCH_DOCTOR(R.color.witch_doctor, "witchdoctor"),
-    NECROMANCER(R.color.necromancer, "necromancer"),
-    WIZARD(R.color.wizard, "wizard"),
-    MONK(R.color.monk, "monk"),
-    CRUSADER(R.color.crusader, "crusader")
+enum class HeroeClass(@ColorRes val color: Int, val iconName: String, val displayName: String) {
+    DEMON_HUNTER(R.color.demon_hunter, "demon hunter", "DH"),
+    BARBARIAN(R.color.barbarian, "barbarian", "Barb"),
+    WITCH_DOCTOR(R.color.witch_doctor, "witchdoctor", "WD"),
+    NECROMANCER(R.color.necromancer, "necromancer", "Necro"),
+    WIZARD(R.color.wizard, "wizard", "Wizard"),
+    MONK(R.color.monk, "monk", "Monk"),
+    CRUSADER(R.color.crusader, "crusader", "Crusader")
 }
 
 fun TimePlayed.fromHero(heroeClass: HeroeClass): Double {

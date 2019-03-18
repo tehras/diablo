@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="?bgPrimary"
+        android:layout_margin="4dp"
+        android:elevation="@dimen/elevation_standard"
+        android:padding="@dimen/default_padding_small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/playerdetails_seasonal_avatar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/playerdetails_seasonal_class"
+            android:layout_width="@dimen/playerdetails_hero_avatar_size"
+            android:layout_height="@dimen/playerdetails_hero_avatar_size"
+            tools:ignore="ContentDescription"/>
+
+    <TextView
+            android:id="@+id/playerdetails_seasonal_class"
+            app:layout_constraintTop_toBottomOf="@+id/playerdetails_seasonal_avatar"
+            app:layout_constraintStart_toStartOf="@+id/playerdetails_seasonal_avatar"
+            app:layout_constraintEnd_toEndOf="@id/playerdetails_seasonal_avatar"
+            android:layout_width="wrap_content"
+            android:textColor="?typeSecondary"
+            style="@style/TextAppearance.AppCompat.Caption"
+            tools:text="Warlock"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"/>
+
+    <com.github.tehras.ui.commonviews.views.MultiColorCircle
+            app:layout_constraintStart_toStartOf="@+id/playerdetails_seasonal_avatar"
+            app:layout_constraintEnd_toEndOf="@+id/playerdetails_seasonal_avatar"
+            app:layout_constraintTop_toTopOf="@+id/playerdetails_seasonal_avatar"
+            android:id="@+id/playerdetails_seasonal_avatar_outline"
+            app:layout_constraintBottom_toBottomOf="@+id/playerdetails_seasonal_avatar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+    <TextView
+            android:id="@+id/playerdetails_seasonal_name"
+            style="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="?typePrimary"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/default_padding"
+            app:layout_constraintStart_toEndOf="@+id/playerdetails_seasonal_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Season 16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/playerdetails_seasonal_paragon_level"
+            tools:text="Level 611"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="?typePrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <com.github.tehras.ui.commonviews.views.LabelValue
+            android:id="@+id/playerdetails_seasonal_monster_kills"
+            app:layout_constraintTop_toBottomOf="@+id/playerdetails_seasonal_name"
+            app:layout_constraintStart_toStartOf="@+id/playerdetails_seasonal_name"
+            tools:text="611 Kills"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:label="@string/playerdetails_kills_monsters"
+            app:layout_constraintEnd_toStartOf="@+id/playerdetails_seasonal_hc_monster_kills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <com.github.tehras.ui.commonviews.views.LabelValue
+            android:id="@+id/playerdetails_seasonal_hc_monster_kills"
+            tools:text="611 Kills"
+            app:layout_constraintEnd_toStartOf="@+id/playerdetails_seasonal_elite_kills"
+            app:layout_constraintTop_toTopOf="@+id/playerdetails_seasonal_monster_kills"
+            android:label="@string/playerdetails_kills_hc_monsters"
+            app:layout_constraintStart_toEndOf="@+id/playerdetails_seasonal_monster_kills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <com.github.tehras.ui.commonviews.views.LabelValue
+            android:id="@+id/playerdetails_seasonal_elite_kills"
+            tools:text="611 Kills"
+            app:layout_constraintTop_toTopOf="@+id/playerdetails_seasonal_monster_kills"
+            android:label="@string/playerdetails_kills_elites"
+            app:layout_constraintStart_toEndOf="@+id/playerdetails_seasonal_hc_monster_kills"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

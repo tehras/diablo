@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:padding="@dimen/default_padding"
+        android:layout_height="match_parent">
+
+    <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:id="@+id/playerdetails_title_kills"
+            android:text="@string/playerdetails_kills_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    <com.github.tehras.ui.commonviews.views.LabelValue
+            android:id="@+id/playerdetails_kills_monsters"
+            android:label="@string/playerdetails_kills_monsters"
+            tools:text="103"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintTop_toBottomOf="@+id/playerdetails_title_kills"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/playerdetails_kills_hc_monsters"
+            android:layout_height="wrap_content"/>
+
+
+    <com.github.tehras.ui.commonviews.views.LabelValue
+            android:id="@+id/playerdetails_kills_hc_monsters"
+            android:label="@string/playerdetails_kills_hc_monsters"
+            tools:text="103"
+            app:layout_constraintTop_toBottomOf="@+id/playerdetails_title_kills"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/playerdetails_kills_elites"
+            app:layout_constraintStart_toEndOf="@+id/playerdetails_kills_monsters"
+            android:layout_height="wrap_content"/>
+
+    <com.github.tehras.ui.commonviews.views.LabelValue
+            android:id="@+id/playerdetails_kills_elites"
+            android:label="@string/playerdetails_kills_elites"
+            tools:text="103"
+            app:layout_constraintTop_toBottomOf="@+id/playerdetails_title_kills"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toEndOf="@+id/playerdetails_kills_hc_monsters"
+            android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playerdetails_levels_title">Levels</string>
+    <string name="playerdetails_paragon_level">Paragon Level</string>
+    <string name="playerdetails_hardcore_level">Highest Hardcore Level</string>
+    <string name="playerdetails_hardcore_season_level">Season Hardcore Level</string>
+
+    <string name="playerdetails_kills_title">Kills</string>
+    <string name="playerdetails_kills_monsters">Monsters</string>
+    <string name="playerdetails_kills_hc_monsters">Hardcore Monsters</string>
+    <string name="playerdetails_kills_elites">Elites</string>
+    <string name="playerdetails_player_details_hero_avatar">Player Details Hero Avatar</string>
+    <string name="playerdetails_seasonal">Seasonal</string>
+</resources>

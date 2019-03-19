@@ -1,0 +1,15 @@
+apply from: "$rootDir/gradle/libs-ui.gradle"
+apply from: "$rootDir/gradle/retrofit.gradle"
+apply from: "$rootDir/gradle/glide.gradle"
+apply from: "$rootDir/gradle/db.gradle"
+
+android {
+    resourcePrefix 'herodetails_'
+}
+
+dependencies {
+    implementation deps.api.auth
+
+    implementation deps.api.icons
+    implementation deps.api.heroes
+}

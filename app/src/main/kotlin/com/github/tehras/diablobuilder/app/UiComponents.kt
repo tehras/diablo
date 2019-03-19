@@ -3,6 +3,7 @@
  */
 package com.github.tehras.diablobuilder.app
 
+import com.github.tehras.ui.herodetails.HomeDetailsFragmentComponentCreator
 import com.github.tehras.ui.leaderboards.LeaderboardsListComponentCreator
 import com.github.tehras.ui.playerdetails.PlayerDetailsFragmentComponentCreator
 import com.github.tehras.ui.players.searchhistory.SearchHistoryFragmentComponentCreator
@@ -12,4 +13,5 @@ import com.github.tehras.ui.players.searchhistory.SearchHistoryFragmentComponent
  */
 interface UiComponents : LeaderboardsListComponentCreator,
     SearchHistoryFragmentComponentCreator,
-    PlayerDetailsFragmentComponentCreator
+    PlayerDetailsFragmentComponentCreator,
+    HomeDetailsFragmentComponentCreator

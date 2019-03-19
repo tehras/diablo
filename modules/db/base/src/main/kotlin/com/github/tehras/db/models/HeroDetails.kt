@@ -21,8 +21,7 @@ data class HeroDetails(
     val level: Int,
     @Embedded
     val kills: Kills,
-    @Json(name = "last-updated")
-    val lastUpdated: Long,
+    val lastUpdated: Long?,
     val seasonal: Boolean,
     val hardcore: Boolean,
     val paragonLevel: Int,
@@ -30,7 +29,7 @@ data class HeroDetails(
     @Embedded
     val skills: Skills,
     val items: Map<String, Item>,
-    val legendaryPowers: Map<String, Item>,
+    val legendaryPowers: List<Item>,
     val highestSoloRiftCompleted: Int,
     @Embedded
     val stats: Stats
@@ -97,12 +96,12 @@ data class Item(
 @JsonClass(generateAdapter = true)
 data class Stats(
     val life: Double,
-    val damage: Long,
+    val damage: Double,
     val toughness: Long,
     val healing: Long,
     val attackSpeed: Double,
     val armor: Long,
-    val strength: Long,
+    val strength: Double,
     val dexterity: Long,
     val vitality: Long,
     val intelligence: Long,

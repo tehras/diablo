@@ -3,7 +3,7 @@
  */
 package com.github.tehras.api.leaderboards
 
-import com.github.tehras.api.auth.OauthClient
+import com.github.tehras.api.common.OauthClient
 import com.github.tehras.api.common.UrlResolver
 import com.github.tehras.dagger.scopes.ApplicationScope
 import dagger.Module

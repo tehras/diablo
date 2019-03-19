@@ -30,6 +30,7 @@
             <option value="$PROJECT_DIR$/modules/db/base" />
             <option value="$PROJECT_DIR$/modules/ui" />
             <option value="$PROJECT_DIR$/modules/ui/common-views" />
+            <option value="$PROJECT_DIR$/modules/ui/herodetails" />
             <option value="$PROJECT_DIR$/modules/ui/leaderboards" />
             <option value="$PROJECT_DIR$/modules/ui/playerdetails" />
             <option value="$PROJECT_DIR$/modules/ui/players" />

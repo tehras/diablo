@@ -12,7 +12,7 @@ import com.github.tehras.db.dao.PlayersDao
 import com.github.tehras.db.models.HeroDetails
 import com.github.tehras.db.models.Player
 
-@Database(entities = [Player::class, HeroDetails::class], version = 3)
+@Database(entities = [Player::class, HeroDetails::class], version = 6)
 @TypeConverters(value = [PlayerConverters::class, HeroConverters::class])
 abstract class DiabloDb : RoomDatabase() {
 

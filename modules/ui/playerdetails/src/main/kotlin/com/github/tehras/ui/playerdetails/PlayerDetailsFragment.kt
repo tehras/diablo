@@ -35,7 +35,7 @@ class PlayerDetailsFragment : Fragment() {
     private val playerDetailsViewModel by viewModel<PlayerDetailsViewModel> { factory }
     private val createDisposable = CompositeDisposable()
 
-    private val heroAdapter by lazy { HeroAdapter() }
+    private val heroAdapter by lazy { HeroAdapter(playerDetailsViewModel) }
     private val seasonalAdapter by lazy { SeasonalAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {

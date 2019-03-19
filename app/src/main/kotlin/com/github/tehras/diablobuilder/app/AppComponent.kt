@@ -3,6 +3,8 @@ package com.github.tehras.diablobuilder.app
 import android.app.Application
 import com.github.tehras.api.auth.AuthRetrofitModule
 import com.github.tehras.api.auth.ClientModule
+import com.github.tehras.api.common.PrivateDiabloRetrofitModule
+import com.github.tehras.api.heroes.HeroDetailsRetrofitModule
 import com.github.tehras.api.leaderboards.LeaderboardsRetrofitModule
 import com.github.tehras.api.players.PlayersRetrofitModule
 import com.github.tehras.base.arch.executors.ExecutorsModule
@@ -28,15 +30,16 @@ import dagger.Component
         AuthRetrofitModule::class,
         LeaderboardsRetrofitModule::class,
         PlayersRetrofitModule::class,
+        HeroDetailsRetrofitModule::class,
         DatabaseModule::class,
-        GlobalBusModule::class
+        GlobalBusModule::class,
+        PrivateDiabloRetrofitModule::class
     ]
 )
 interface AppComponent :
     MainComponent,
     UiComponents,
-    Injectors
-{
+    Injectors {
 
     fun plusApplication(application: DiabloApplication)
 

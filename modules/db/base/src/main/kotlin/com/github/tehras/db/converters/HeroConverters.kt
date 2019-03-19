@@ -20,11 +20,27 @@ class HeroConverters {
     }
 
     @TypeConverter
+    fun toListOfItems(json: String?): List<Item> {
+        if (json.isNullOrEmpty()) return listOf()
+
+        val listMyData = Types.newParameterizedType(List::class.java, Item::class.java)
+        return moshi.adapter<List<Item>>(listMyData).fromJson(json) ?: listOf()
+    }
+
+    @TypeConverter
     fun fromMapOfItems(items: Map<String, Item>?): String {
         if (items.isNullOrEmpty()) return ""
 
         val mapMyData = Types.newParameterizedType(Map::class.java, String::class.java, Item::class.java)
         return moshi.adapter<Map<String, Item>>(mapMyData).toJson(items)
+    }
+
+    @TypeConverter
+    fun fromListOfItems(items: List<Item>?): String {
+        if (items.isNullOrEmpty()) return ""
+
+        val listMyData = Types.newParameterizedType(List::class.java, Item::class.java)
+        return moshi.adapter<List<Item>>(listMyData).toJson(items)
     }
 
     @TypeConverter

@@ -34,6 +34,7 @@ ext {
                     leaderboards : project(':modules:ui:leaderboards'),
                     players      : project(':modules:ui:players'),
                     playerdetails: project(':modules:ui:playerdetails'),
+                    herodetails  : project(':modules:ui:herodetails'),
                     commonviews  : project(':modules:ui:common-views')
             ],
             test               : [

@@ -16,8 +16,10 @@ dependencies {
     implementation deps.api.auth
     implementation deps.api.leaderboards
     implementation deps.api.players
+    implementation deps.api.heroes
 
     implementation deps.ui.leaderboards
     implementation deps.ui.players
     implementation deps.ui.playerdetails
+    implementation deps.ui.herodetails
 }

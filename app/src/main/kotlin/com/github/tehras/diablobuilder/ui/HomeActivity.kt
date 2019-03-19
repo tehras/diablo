@@ -7,6 +7,7 @@ import com.github.tehras.base.arch.rx.GlobalBusInjector
 import com.github.tehras.base.arch.rx.NavEvent
 import com.github.tehras.base.dagger.components.findComponent
 import com.github.tehras.diablobuilder.R
+import com.github.tehras.ui.herodetails.HeroDetailsFragment
 import com.github.tehras.ui.leaderboards.LeaderboardsListFragment
 import com.github.tehras.ui.playerdetails.PlayerDetailsFragment
 import com.github.tehras.ui.players.searchhistory.SearchHistoryFragment
@@ -38,9 +39,13 @@ class HomeActivity : AppCompatActivity() {
         super.onStart()
 
         startDisposable += rxBus.observe()
-            .ofType<NavEvent.StartPlayerDetailsScreen>()
-            .map { it.battleTag }
-            .subscribeBy { startPlayerDetailsScreen(it) }
+            .ofType<NavEvent>()
+            .subscribeBy {
+                when (it) {
+                    is NavEvent.StartPlayerDetailsScreen -> startPlayerDetailsScreen(it.battleTag)
+                    is NavEvent.StartHeroDetailsScreen -> startHeroDetailsScreen(it.battleTag, it.heroId)
+                }
+            }
     }
 
     override fun onStop() {
@@ -65,6 +70,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun startPlayerDetailsScreen(battleTag: String) =
         startFullScreenFragment(PlayerDetailsFragment.newInstance(battleTag))
+
+    private fun startHeroDetailsScreen(battleTag: String, heroId: Long) =
+        startFullScreenFragment(HeroDetailsFragment.newInstance(battleTag, heroId))
 
     private fun startPlayersFragment() = startFragment(SearchHistoryFragment.newInstance())
     private fun startLeaderboardsFragment() = startFragment(LeaderboardsListFragment.newInstance())

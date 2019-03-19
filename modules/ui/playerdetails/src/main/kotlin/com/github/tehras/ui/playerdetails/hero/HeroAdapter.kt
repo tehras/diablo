@@ -8,17 +8,17 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.github.tehras.api.icons.heroIconLg
 import com.github.tehras.base.ext.views.viewHolderFromParent
 import com.github.tehras.base.glide.GlideApp
-import com.github.tehras.db.models.Heroe
+import com.github.tehras.db.models.Hero
 import com.github.tehras.db.models.toGender
 import com.github.tehras.ui.playerdetails.R
 import io.reactivex.functions.Consumer
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.playerdetails_heroes_list_item.*
 
-class HeroAdapter : RecyclerView.Adapter<HeroViewHolder>(), Consumer<List<Heroe>> {
-    private val heroes: MutableList<Heroe> = mutableListOf()
+class HeroAdapter : RecyclerView.Adapter<HeroViewHolder>(), Consumer<List<Hero>> {
+    private val heroes: MutableList<Hero> = mutableListOf()
 
-    override fun accept(newHeroes: List<Heroe>) {
+    override fun accept(newHeroes: List<Hero>) {
         val shouldAnimate = heroes.isEmpty()
         heroes.clear()
         heroes.addAll(newHeroes)
@@ -42,7 +42,7 @@ class HeroViewHolder(override val containerView: View) : RecyclerView.ViewHolder
         containerView.resources.getDimensionPixelSize(R.dimen.playerdetails_hero_avatar_size).div(2)
     }
 
-    fun bind(hero: Heroe) {
+    fun bind(hero: Hero) {
         playerdetails_hero_level.text =
             if (hero.paragonLevel > 0) "Paragon ${hero.paragonLevel}" else "Level ${hero.level}"
         playerdetails_hero_name.text = hero.name

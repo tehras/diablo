@@ -10,28 +10,36 @@
             app:cardBackgroundColor="?bgPrimary"
             android:layout_marginStart="@dimen/default_padding_small"
             android:layout_marginEnd="@dimen/default_padding_small"
-            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding_small"
             android:layout_height="wrap_content">
 
         <include layout="@layout/playerdetails_view_fragment_levels"/>
 
     </androidx.cardview.widget.CardView>
 
-
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             app:cardBackgroundColor="?bgPrimary"
             android:layout_marginStart="@dimen/default_padding_small"
             android:layout_marginEnd="@dimen/default_padding_small"
-            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding_small"
             android:layout_height="wrap_content">
 
         <include layout="@layout/playerdetails_view_fragment_kills"/>
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:text="@string/playerdetails_heroes_title"
             android:layout_marginTop="@dimen/default_padding_small"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+    />
+
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/playerdetails_heroes_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -41,13 +49,12 @@
             android:layout_height="wrap_content"
             style="@style/TextAppearance.AppCompat.Title"
             android:text="@string/playerdetails_seasonal"
-            android:layout_marginTop="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding_small"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
     />
 
     <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="@dimen/default_padding_small"
             android:id="@+id/playerdetails_seasonal_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

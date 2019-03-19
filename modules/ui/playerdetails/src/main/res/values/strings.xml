@@ -11,4 +11,5 @@
     <string name="playerdetails_kills_elites">Elites</string>
     <string name="playerdetails_player_details_hero_avatar">Player Details Hero Avatar</string>
     <string name="playerdetails_seasonal">Seasonal</string>
+    <string name="playerdetails_heroes_title">Heroes</string>
 </resources>

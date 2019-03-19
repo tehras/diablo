@@ -1,31 +1,30 @@
 package com.github.tehras.db.converters
 
 import androidx.room.TypeConverter
-import com.github.tehras.db.models.Heroe
+import com.github.tehras.db.models.Hero
 import com.github.tehras.db.models.SeasonalProfile
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
-
 
 class PlayerConverters {
     private val moshi = Moshi.Builder().build()
 
     @TypeConverter
-    fun toListOfHeroes(json: String?): List<Heroe> {
+    fun toListOfHeroes(json: String?): List<Hero> {
         return if (json.isNullOrEmpty()) {
             listOf()
         } else {
-            val listMyData = Types.newParameterizedType(List::class.java, Heroe::class.java)
-            moshi.adapter<List<Heroe>>(listMyData).fromJson(json) ?: listOf()
+            val listMyData = Types.newParameterizedType(List::class.java, Hero::class.java)
+            moshi.adapter<List<Hero>>(listMyData).fromJson(json) ?: listOf()
         }
     }
 
     @TypeConverter
-    fun fromListOfHeroes(heroes: List<Heroe>?): String {
+    fun fromListOfHeroes(heroes: List<Hero>?): String {
         if (heroes.isNullOrEmpty()) return ""
 
-        val listMyData = Types.newParameterizedType(List::class.java, Heroe::class.java)
-        return moshi.adapter<List<Heroe>>(listMyData).toJson(heroes)
+        val listMyData = Types.newParameterizedType(List::class.java, Hero::class.java)
+        return moshi.adapter<List<Hero>>(listMyData).toJson(heroes)
     }
 
     @TypeConverter

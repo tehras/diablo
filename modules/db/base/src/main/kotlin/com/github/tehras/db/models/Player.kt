@@ -18,7 +18,7 @@ data class Player(
     val paragonLevelHardcore: Int,
     val paragonLevelSeasonHardcore: Int,
     val guildName: String,
-    val heroes: List<Heroe>,
+    val heroes: List<Hero>,
     val lastHeroPlayed: Long,
     val lastUpdated: Long,
     @Embedded
@@ -31,18 +31,7 @@ data class Player(
 
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class SeasonalProfile(
-    val seasonId: Int,
-    val paragonLevel: Int,
-    val paragonLevelHardcore: Int,
-    val kills: Kills,
-    val timePlayed: TimePlayed,
-    val highestHardcoreLevel: Int
-) : Parcelable
-
-@Parcelize
-@JsonClass(generateAdapter = true)
-data class Heroe(
+data class Hero(
     val id: Long,
     val name: String,
     @Json(name = "class")
@@ -55,28 +44,6 @@ data class Heroe(
     val seasonal: Boolean,
     val hardcore: Boolean,
     val paragonLevel: Int
-) : Parcelable
-
-@Parcelize
-@JsonClass(generateAdapter = true)
-data class Kills(
-    val monsters: Long?,
-    val elites: Long?,
-    val hardcoreMonsters: Long?
-) : Parcelable
-
-@Parcelize
-@JsonClass(generateAdapter = true)
-data class TimePlayed(
-    @Json(name = "demon-hunter")
-    val demonHunter: Double,
-    @Json(name = "witch-doctor")
-    val witchDoctor: Double,
-    val necromancer: Double,
-    val barbarian: Double,
-    val wizard: Double,
-    val monk: Double,
-    val crusader: Double
 ) : Parcelable
 
 fun Int.toGender() = if (this == 0) Gender.MALE else Gender.FEMALE

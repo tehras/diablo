@@ -8,7 +8,6 @@ import com.github.tehras.db.models.Player
 import io.reactivex.Scheduler
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.withLatestFrom
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class SearchHistoryPlayersListViewModel @Inject constructor(

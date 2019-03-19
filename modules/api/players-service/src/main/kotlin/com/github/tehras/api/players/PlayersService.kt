@@ -12,5 +12,5 @@ interface PlayersService {
     fun getPlayer(
         @Path(value = "battle_tag") battleTag: String,
         @Query(value = "locale") locale: String = Locale.US.toString()
-    ): Single<com.github.tehras.db.models.Player>
+    ): Single<Player>
 }

@@ -3,9 +3,15 @@
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:background="?bgPrimary"
-        android:layout_margin="4dp"
-        android:elevation="@dimen/elevation_standard"
-        android:padding="@dimen/default_padding_small"
+        android:layout_marginStart="@dimen/default_padding_small"
+        android:layout_marginEnd="@dimen/default_padding_small"
+        android:layout_marginTop="@dimen/default_padding_small"
+        android:layout_marginBottom="@dimen/default_padding_small"
+        android:elevation="@dimen/elevation_small"
+        android:paddingTop="@dimen/default_padding"
+        android:paddingBottom="@dimen/default_padding"
+        android:paddingStart="@dimen/default_padding"
+        android:paddingEnd="@dimen/default_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

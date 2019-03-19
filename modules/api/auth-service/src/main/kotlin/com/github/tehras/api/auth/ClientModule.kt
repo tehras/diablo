@@ -6,12 +6,14 @@ package com.github.tehras.api.auth
 import com.github.tehras.api.auth.interceptors.BasicAuthInterceptor
 import com.github.tehras.api.auth.interceptors.OauthInterceptor
 import com.github.tehras.api.auth.oauth.OauthTokenProvider
+import com.github.tehras.api.common.BasicAuthClient
+import com.github.tehras.api.common.DefaultClient
+import com.github.tehras.api.common.OauthClient
 import com.github.tehras.dagger.scopes.ApplicationScope
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import timber.log.Timber
-import javax.inject.Qualifier
 
 /**
  * @author tkoshkin
@@ -73,15 +75,3 @@ object ClientModule {
         return this
     }
 }
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class BasicAuthClient
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class OauthClient
-
-@Qualifier
-@Retention(AnnotationRetention.RUNTIME)
-annotation class DefaultClient

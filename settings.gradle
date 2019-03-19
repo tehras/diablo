@@ -20,5 +20,6 @@ include ':app',
         ':modules:api:leaderboards-service',
         ':modules:api:players-service',
         ':modules:api:auth-service',
-        ':modules:api:icons-service'
+        ':modules:api:icons-service',
+        ':modules:api:heroes-service'
 

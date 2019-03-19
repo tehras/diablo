@@ -93,7 +93,7 @@ data class SearchHistoryState(
 sealed class SearchResult {
     object NoResult : SearchResult()
     object Error : SearchResult()
-    data class Success(val player: com.github.tehras.db.models.Player) : SearchResult()
+    data class Success(val player: Player) : SearchResult()
 }
 
 sealed class SearchHistoryUiEvent {

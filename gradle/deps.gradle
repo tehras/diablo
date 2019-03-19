@@ -27,7 +27,8 @@ ext {
                     leaderboards: project(':modules:api:leaderboards-service'),
                     players     : project(':modules:api:players-service'),
                     auth        : project(':modules:api:auth-service'),
-                    icons       : project(':modules:api:icons-service')
+                    icons       : project(':modules:api:icons-service'),
+                    heroes      : project(':modules:api:heroes-service')
             ],
             ui                 : [
                     leaderboards : project(':modules:ui:leaderboards'),

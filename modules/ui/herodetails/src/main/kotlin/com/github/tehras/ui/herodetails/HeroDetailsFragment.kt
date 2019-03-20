@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.tehras.api.icons.itemIconLg
+import com.github.tehras.base.arch.rx.shareBehavior
 import com.github.tehras.base.arch.viewModel
 import com.github.tehras.base.dagger.components.findComponent
 import com.github.tehras.base.ext.fragment.withBundle
+import com.github.tehras.db.models.HeroDetails
 import com.github.tehras.db.models.Item
 import com.github.tehras.ui.commonviews.views.hero.HeroItemColor
 import com.github.tehras.ui.herodetails.HeroDetailsFragment.Companion.BUNDLE_GAME_TAG
@@ -17,6 +19,7 @@ import com.github.tehras.ui.herodetails.HeroDetailsFragment.Companion.BUNDLE_HER
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.plusAssign
+import kotlinx.android.synthetic.main.herodetails_fragment_layout.*
 import kotlinx.android.synthetic.main.herodetails_fragment_layout_content.*
 import javax.inject.Inject
 
@@ -45,12 +48,24 @@ class HeroDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        createDisposable += heroDetailsViewModel
+        val stateObservable = heroDetailsViewModel
             .observeState()
+            .shareBehavior()
+
+        createDisposable += stateObservable
             .observeOn(AndroidSchedulers.mainThread())
             .map { it.heroDetails.items }
             .distinctUntilChanged()
             .subscribe(::populateHeroDetails)
+
+        createDisposable += stateObservable
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { it.heroDetails }
+            .subscribe(::populateLayouts)
+    }
+
+    private fun populateLayouts(heroDetails: HeroDetails) {
+        herodetails_toolbar.title = "${heroDetails.name} • ${heroDetails.heroeClass.capitalize()}"
     }
 
     private fun populateHeroDetails(items: Map<String, Item>) {

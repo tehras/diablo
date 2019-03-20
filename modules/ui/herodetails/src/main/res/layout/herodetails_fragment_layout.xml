@@ -8,8 +8,6 @@
 
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/herodetails_toolbar"
-            android:background="?bgPrimary"
-            android:elevation="@dimen/elevation_standard"
             app:navigationIcon="@drawable/common_views_ic_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

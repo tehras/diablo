@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import com.github.tehras.base.glide.GlideApp
 import com.github.tehras.ui.commonviews.R
+import com.github.tehras.ui.commonviews.animations.fadeIn
 import kotlinx.android.synthetic.main.common_views_hero_item_layout.view.*
 
 class HeroItemLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
@@ -31,6 +32,7 @@ class HeroItemLayout @JvmOverloads constructor(context: Context, attrs: Attribut
     @Suppress("DEPRECATION")
     private fun assignColorToBackground(color: HeroItemColor) {
         common_views_hero_item_container.isVisible = true
+        common_views_hero_item_container.fadeIn()
         context.resources.getDrawable(R.drawable.common_views_hero_item_background)
             .also {
                 it.setColorFilter(context.resources.getColor(color.color), PorterDuff.Mode.SRC_ATOP)

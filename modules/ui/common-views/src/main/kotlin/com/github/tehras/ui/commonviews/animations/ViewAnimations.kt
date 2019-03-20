@@ -20,3 +20,12 @@ fun View.slideInBottom() {
                 .start()
         }
 }
+
+fun View.fadeIn() {
+    alpha = 0f
+
+    animate()
+        .alpha(1f)
+        .setInterpolator(AccelerateDecelerateInterpolator())
+        .start()
+}

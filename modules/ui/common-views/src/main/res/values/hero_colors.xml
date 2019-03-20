@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="common_views_hero_common">#fff</color>
+    <color name="common_views_hero_blue">#6969ff</color>
+    <color name="common_views_hero_yellow">#ffff00</color>
+    <color name="common_views_hero_orange">#bf642f</color>
+    <color name="common_views_hero_green">#00ff00</color>
+</resources>

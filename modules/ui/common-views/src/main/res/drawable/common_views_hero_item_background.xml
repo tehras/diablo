@@ -1,0 +1,19 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+       android:shape="rectangle">
+
+    <corners
+            android:bottomLeftRadius="@dimen/corner_radius_default"
+            android:bottomRightRadius="@dimen/corner_radius_default"
+            android:topLeftRadius="@dimen/corner_radius_default"
+            android:topRightRadius="@dimen/corner_radius_default"/>
+
+    <stroke
+            android:width="3dp"
+            tools:color="@color/common_views_hero_orange"
+            android:color="?typePrimary"/>
+
+    <solid
+            tools:color="@android:color/black" android:color="?bgPrimary"
+    />
+
+</shape>

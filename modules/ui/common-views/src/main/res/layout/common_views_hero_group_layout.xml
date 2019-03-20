@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/common_views_hero_item_container"
+        android:layout_width="match_parent"
+        android:padding="@dimen/default_padding"
+        android:layout_height="match_parent">
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_head"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/HeroItem.Helm"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_shoulder"
+            app:layout_constraintEnd_toStartOf="@+id/common_views_hero_item_head"
+            app:layout_constraintTop_toTopOf="@+id/common_views_hero_item_head"
+            style="@style/HeroItem.Shoulders"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_necklace"
+            app:layout_constraintStart_toEndOf="@+id/common_views_hero_item_head"
+            app:layout_constraintBottom_toBottomOf="@+id/common_views_hero_item_shoulder"
+            app:layout_constraintTop_toTopOf="@id/common_views_hero_item_shoulder"
+            style="@style/HeroItem.Neck"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_body"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_head"
+            app:layout_constraintStart_toStartOf="@+id/common_views_hero_item_head"
+            app:layout_constraintEnd_toEndOf="@+id/common_views_hero_item_head"
+            style="@style/HeroItem.Body"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_arms"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_shoulder"
+            app:layout_constraintEnd_toEndOf="@+id/common_views_hero_item_shoulder"
+            style="@style/HeroItem.Arms"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_bracers"
+            app:layout_constraintStart_toStartOf="@+id/common_views_hero_item_necklace"
+            app:layout_constraintTop_toTopOf="@+id/common_views_hero_item_arms"
+            style="@style/HeroItem.Bracers"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_belt"
+            app:layout_constraintStart_toStartOf="@+id/common_views_hero_item_body"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_body"
+            app:layout_constraintEnd_toEndOf="@+id/common_views_hero_item_body"
+            style="@style/HeroItem.Belt"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_legs"
+            app:layout_constraintStart_toStartOf="@+id/common_views_hero_item_belt"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_belt"
+            app:layout_constraintEnd_toEndOf="@+id/common_views_hero_item_belt"
+            style="@style/HeroItem.Legs"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_boots"
+            app:layout_constraintStart_toStartOf="@+id/common_views_hero_item_legs"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_legs"
+            app:layout_constraintEnd_toEndOf="@+id/common_views_hero_item_legs"
+            style="@style/HeroItem.Boots"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_l_ring"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_arms"
+            app:layout_constraintStart_toStartOf="@id/common_views_hero_item_arms"
+            app:layout_constraintEnd_toEndOf="@id/common_views_hero_item_arms"
+            style="@style/HeroItem.Ring"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_r_ring"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_bracers"
+            app:layout_constraintStart_toStartOf="@id/common_views_hero_item_bracers"
+            app:layout_constraintEnd_toEndOf="@id/common_views_hero_item_bracers"
+            style="@style/HeroItem.Ring"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_weapon_primary"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_l_ring"
+            app:layout_constraintStart_toStartOf="@id/common_views_hero_item_arms"
+            app:layout_constraintEnd_toEndOf="@id/common_views_hero_item_arms"
+            app:layout_constraintBottom_toBottomOf="@id/common_views_hero_item_boots"
+            style="@style/HeroItem.Weapon"
+    />
+
+    <com.github.tehras.ui.commonviews.views.hero.HeroItemLayout
+            android:id="@+id/common_views_hero_item_weapon_secondary"
+            app:layout_constraintTop_toBottomOf="@+id/common_views_hero_item_r_ring"
+            app:layout_constraintStart_toStartOf="@id/common_views_hero_item_bracers"
+            app:layout_constraintEnd_toEndOf="@id/common_views_hero_item_bracers"
+            app:layout_constraintBottom_toBottomOf="@id/common_views_hero_item_boots"
+            style="@style/HeroItem.Weapon"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package com.github.tehras.diablobuilder.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.github.tehras.base.arch.rx.GlobalBusInjector
 import com.github.tehras.base.arch.rx.NavEvent
@@ -11,13 +10,14 @@ import com.github.tehras.ui.herodetails.HeroDetailsFragment
 import com.github.tehras.ui.leaderboards.LeaderboardsListFragment
 import com.github.tehras.ui.playerdetails.PlayerDetailsFragment
 import com.github.tehras.ui.players.searchhistory.SearchHistoryFragment
+import com.klinker.android.peekview.PeekViewActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : PeekViewActivity() {
 
     private val rxBus by lazy { findComponent<GlobalBusInjector>().globalBus() }
     private val startDisposable = CompositeDisposable()

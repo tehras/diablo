@@ -42,7 +42,7 @@ ext {
                     truth: 'com.google.truth:truth:0.42'
             ],
 
-            appcompat          : 'androidx.appcompat:appcompat:1.1.0-alpha02',
+            appcompat          : 'androidx.appcompat:appcompat:1.1.0-alpha03',
             ktx                : 'androidx.core:core-ktx:1.1.0-alpha04',
             constraint         : 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3',
             coordinator        : "androidx.coordinatorlayout:coordinatorlayout:1.1.0-alpha01",
@@ -93,6 +93,7 @@ ext {
             appCenterAnalytics : "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}",
             appCenterCrashes   : "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}",
 
-            timber             : "com.jakewharton.timber:timber:4.7.1"
+            timber             : "com.jakewharton.timber:timber:4.7.1",
+            peek               : "com.klinkerapps:peekview:1.2.3"
     ]
 }

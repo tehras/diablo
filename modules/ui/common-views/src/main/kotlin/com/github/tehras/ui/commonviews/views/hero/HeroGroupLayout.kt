@@ -13,55 +13,68 @@ class HeroGroupLayout @JvmOverloads constructor(
         inflate(context, R.layout.common_views_hero_group_layout, this)
     }
 
-    fun head(color: String, itemUrl: String) {
+    fun head(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_head.populate(color, itemUrl)
+        return common_views_hero_item_head
     }
 
-    fun shoulders(color: String, itemUrl: String) {
+    fun shoulders(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_shoulder.populate(color, itemUrl)
+        return common_views_hero_item_shoulder
     }
 
-    fun bracers(color: String, itemUrl: String) {
+    fun bracers(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_bracers.populate(color, itemUrl)
+        return common_views_hero_item_bracers
     }
 
-    fun leftRing(color: String, itemUrl: String) {
+    fun leftRing(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_l_ring.populate(color, itemUrl)
+        return common_views_hero_item_l_ring
     }
 
-    fun rightRing(color: String, itemUrl: String) {
+    fun rightRing(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_r_ring.populate(color, itemUrl)
+        return common_views_hero_item_r_ring
     }
 
-    fun legs(color: String, itemUrl: String) {
+    fun legs(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_legs.populate(color, itemUrl)
+        return common_views_hero_item_legs
     }
 
-    fun boots(color: String, itemUrl: String) {
+    fun boots(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_boots.populate(color, itemUrl)
+        return common_views_hero_item_boots
     }
 
-    fun body(color: String, itemUrl: String) {
+    fun body(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_body.populate(color, itemUrl)
+        return common_views_hero_item_body
     }
 
-    fun arms(color: String, itemUrl: String) {
+    fun arms(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_arms.populate(color, itemUrl)
+        return common_views_hero_item_arms
     }
 
-    fun primaryWeapon(color: String, itemUrl: String) {
+    fun primaryWeapon(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_weapon_primary.populate(color, itemUrl)
+        return common_views_hero_item_weapon_primary
     }
 
-    fun secondaryWeapon(color: String, itemUrl: String) {
+    fun secondaryWeapon(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_weapon_secondary.populate(color, itemUrl)
+        return common_views_hero_item_weapon_secondary
     }
 
-    fun belt(color: String, itemUrl: String) {
+    fun belt(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_belt.populate(color, itemUrl)
+        return common_views_hero_item_belt
     }
 
-    fun neck(color: String, itemUrl: String) {
+    fun neck(color: String, itemUrl: String): HeroItemLayout {
         common_views_hero_item_necklace.populate(color, itemUrl)
+        return common_views_hero_item_necklace
     }
 }

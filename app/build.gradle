@@ -22,4 +22,6 @@ dependencies {
     implementation deps.ui.players
     implementation deps.ui.playerdetails
     implementation deps.ui.herodetails
+
+    implementation deps.peek
 }

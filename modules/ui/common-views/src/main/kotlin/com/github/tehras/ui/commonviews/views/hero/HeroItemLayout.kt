@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.view.isVisible
 import com.github.tehras.base.glide.GlideApp
 import com.github.tehras.ui.commonviews.R
@@ -26,6 +27,8 @@ class HeroItemLayout @JvmOverloads constructor(context: Context, attrs: Attribut
         GlideApp
             .with(context)
             .load(itemUrl)
+            .fitCenter()
+            .encodeQuality(20)
             .into(common_views_hero_item_image)
     }
 
@@ -33,8 +36,11 @@ class HeroItemLayout @JvmOverloads constructor(context: Context, attrs: Attribut
     private fun assignColorToBackground(color: HeroItemColor) {
         common_views_hero_item_container.isVisible = true
         common_views_hero_item_container.fadeIn()
-        context.resources.getDrawable(R.drawable.common_views_hero_item_background)
-            .also {
+        ContextThemeWrapper(
+            context,
+            R.style.Theme_AppCompat_DayNight
+        ).getDrawable(R.drawable.common_views_hero_item_background)
+            ?.also {
                 it.setColorFilter(context.resources.getColor(color.color), PorterDuff.Mode.SRC_ATOP)
 
                 common_views_hero_item_container.background = it

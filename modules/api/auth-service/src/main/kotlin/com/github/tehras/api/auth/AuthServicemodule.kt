@@ -11,7 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 @Module
-object AuthRetrofitModule {
+object AuthServicemodule {
     @Provides
     @JvmStatic
     @ApplicationScope

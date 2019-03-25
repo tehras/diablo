@@ -22,5 +22,7 @@ include ':app',
         ':modules:api:players-service',
         ':modules:api:auth-service',
         ':modules:api:icons-service',
+        ':modules:api:items-service',
+        ':modules:api:settings-service',
         ':modules:api:heroes-service'
 

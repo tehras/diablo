@@ -68,6 +68,7 @@ object ClientModule {
             val response = it.proceed(newRequest)
             Timber.d("Response :: success :: ${response.isSuccessful}")
             Timber.d("Response :: code :: ${response.code()}")
+            Timber.d("Response :: body :: ${response.peekBody(1024)}")
 
             // Keep it separated so you can check if the request looks correct
             response

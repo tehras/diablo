@@ -17,6 +17,7 @@ dependencies {
     implementation deps.api.leaderboards
     implementation deps.api.players
     implementation deps.api.heroes
+    implementation deps.api.items
 
     implementation deps.ui.leaderboards
     implementation deps.ui.players

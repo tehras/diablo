@@ -14,6 +14,7 @@ import com.github.tehras.db.models.HeroDetails
 import com.github.tehras.ui.herodetails.HeroDetailsFragment.Companion.BUNDLE_GAME_TAG
 import com.github.tehras.ui.herodetails.HeroDetailsFragment.Companion.BUNDLE_HERO_ID
 import com.github.tehras.ui.herodetails.delegates.HeroItemsDelegate
+import com.github.tehras.ui.herodetails.views.HeroItemDetailsViewModelProvider
 import com.jakewharton.rxbinding3.appcompat.navigationClicks
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -23,10 +24,12 @@ import kotlinx.android.synthetic.main.herodetails_fragment_layout_content.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class HeroDetailsFragment : Fragment() {
+class HeroDetailsFragment : Fragment(), HeroItemDetailsViewModelProvider {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
     private val heroDetailsViewModel by viewModel<HeroDetailsViewModel> { factory }
+    private val heroItemDetailsViewModel by viewModel<HeroItemDetailsViewModel> { factory }
+
     private val createDisposable = CompositeDisposable()
     private val heroItemsDelegate = HeroItemsDelegate.attach(this)
 
@@ -40,6 +43,8 @@ class HeroDetailsFragment : Fragment() {
             .build()
             .inject(this)
     }
+
+    override fun itemDetailsViewModel(): HeroItemDetailsViewModel = heroItemDetailsViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.herodetails_fragment_layout, container, false)

@@ -7,7 +7,7 @@ import dagger.Provides
 import retrofit2.Retrofit
 
 @Module
-object HeroDetailsRetrofitModule {
+object HeroDetailsServiceModule {
     @Provides
     @JvmStatic
     @ApplicationScope

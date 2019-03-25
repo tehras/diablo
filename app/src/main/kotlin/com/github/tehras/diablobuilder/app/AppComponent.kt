@@ -1,12 +1,13 @@
 package com.github.tehras.diablobuilder.app
 
 import android.app.Application
-import com.github.tehras.api.auth.AuthRetrofitModule
+import com.github.tehras.api.auth.AuthServicemodule
 import com.github.tehras.api.auth.ClientModule
 import com.github.tehras.api.common.PrivateDiabloRetrofitModule
-import com.github.tehras.api.heroes.HeroDetailsRetrofitModule
-import com.github.tehras.api.leaderboards.LeaderboardsRetrofitModule
-import com.github.tehras.api.players.PlayersRetrofitModule
+import com.github.tehras.api.heroes.HeroDetailsServiceModule
+import com.github.tehras.api.items.ItemsServiceModule
+import com.github.tehras.api.leaderboards.LeaderboardsServiceModule
+import com.github.tehras.api.players.PlayersServiceModule
 import com.github.tehras.base.arch.executors.ExecutorsModule
 import com.github.tehras.base.arch.rx.GlobalBusModule
 import com.github.tehras.base.dagger.components.MainComponent
@@ -27,10 +28,11 @@ import dagger.Component
         ExecutorsModule::class,
         ClientModule::class,
         RetrofitModule::class,
-        AuthRetrofitModule::class,
-        LeaderboardsRetrofitModule::class,
-        PlayersRetrofitModule::class,
-        HeroDetailsRetrofitModule::class,
+        AuthServicemodule::class,
+        LeaderboardsServiceModule::class,
+        ItemsServiceModule::class,
+        PlayersServiceModule::class,
+        HeroDetailsServiceModule::class,
         DatabaseModule::class,
         GlobalBusModule::class,
         PrivateDiabloRetrofitModule::class

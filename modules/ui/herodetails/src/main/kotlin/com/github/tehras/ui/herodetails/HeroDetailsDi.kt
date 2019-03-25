@@ -18,6 +18,11 @@ abstract class HeroDetailsFragmentModule {
     @IntoMap
     @ViewModelKey(HeroDetailsViewModel::class)
     abstract fun bindHeroDetailsViewModel(searchHistoryViewModel: HeroDetailsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(HeroItemDetailsViewModel::class)
+    abstract fun bindHeroItemDetailsViewModel(searchHistoryViewModel: HeroItemDetailsViewModel): ViewModel
 }
 
 @FragmentScope

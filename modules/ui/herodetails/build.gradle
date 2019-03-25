@@ -12,6 +12,7 @@ dependencies {
 
     implementation deps.api.icons
     implementation deps.api.heroes
+    implementation deps.api.items
 
     implementation deps.peek
 }

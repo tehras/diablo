@@ -15,7 +15,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Qualifier
 
 @Module
-object LeaderboardsRetrofitModule {
+object LeaderboardsServiceModule {
     @Provides
     @JvmStatic
     @ApplicationScope

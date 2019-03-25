@@ -2,6 +2,7 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Theme.Movies.Dark" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="android:windowBackground">@color/primary_color_dark</item>
 
         <item name="colorPrimaryLight">@color/primary_color_dark_dark</item>
         <item name="colorPrimary">@color/primary_color_dark</item>

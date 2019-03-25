@@ -8,6 +8,7 @@ import com.github.tehras.db.models.Item
 import com.github.tehras.ui.commonviews.views.hero.HeroGroupLayout
 import com.github.tehras.ui.commonviews.views.hero.HeroItemColor
 import com.github.tehras.ui.herodetails.views.HeroItemDetails
+import com.github.tehras.ui.herodetails.views.HeroItemDetailsViewModelProvider
 import com.klinker.android.peekview.PeekViewActivity
 
 class HeroItemsDelegate private constructor() : LifecycleObserver {
@@ -50,7 +51,12 @@ class HeroItemsDelegate private constructor() : LifecycleObserver {
 
     private fun Item?.fill(fragment: Fragment, block: Pair<String, String>.() -> View) {
         convertToPair(this).block().apply {
-            if (this@fill != null) HeroItemDetails(fragment.activity as PeekViewActivity, this, this@fill)
+            if (this@fill != null) HeroItemDetails(
+                fragment.activity as PeekViewActivity,
+                this,
+                this@fill,
+                fragment as HeroItemDetailsViewModelProvider
+            )
         }
     }
 }

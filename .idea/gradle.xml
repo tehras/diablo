@@ -15,8 +15,10 @@
             <option value="$PROJECT_DIR$/modules/api/common-service" />
             <option value="$PROJECT_DIR$/modules/api/heroes-service" />
             <option value="$PROJECT_DIR$/modules/api/icons-service" />
+            <option value="$PROJECT_DIR$/modules/api/items-service" />
             <option value="$PROJECT_DIR$/modules/api/leaderboards-service" />
             <option value="$PROJECT_DIR$/modules/api/players-service" />
+            <option value="$PROJECT_DIR$/modules/api/settings-service" />
             <option value="$PROJECT_DIR$/modules/base" />
             <option value="$PROJECT_DIR$/modules/base/arch" />
             <option value="$PROJECT_DIR$/modules/base/dagger" />

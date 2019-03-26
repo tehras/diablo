@@ -62,13 +62,18 @@ object ClientModule {
                 .newBuilder()
                 .build()
 
-            Timber.d("Request :: url :: ${newRequest.url()}")
-            Timber.d("Request :: url :: ${newRequest.headers()}")
+            if (BuildConfig.DEBUG) {
+                Timber.d("Request :: url :: ${newRequest.url()}")
+                Timber.d("Request :: url :: ${newRequest.headers()}")
+            }
 
             val response = it.proceed(newRequest)
-            Timber.d("Response :: success :: ${response.isSuccessful}")
-            Timber.d("Response :: code :: ${response.code()}")
-            Timber.d("Response :: body :: ${response.peekBody(1024)}")
+
+            if (BuildConfig.DEBUG) {
+                Timber.d("Response :: success :: ${response.isSuccessful}")
+                Timber.d("Response :: code :: ${response.code()}")
+                Timber.d("Response :: body :: ${response.peekBody(2048).string()}")
+            }
 
             // Keep it separated so you can check if the request looks correct
             response

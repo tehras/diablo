@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="herodetails_active_skills">Active Skills</string>
+    <string name="herodetails_passive_skills">Passive Skills</string>
+</resources>

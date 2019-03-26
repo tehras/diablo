@@ -7,4 +7,9 @@
         <attr name="android:label" format="string"/>
         <attr name="android:text" format="string"/>
     </declare-styleable>
+    <declare-styleable name="ExpandableLayout" tools:ignore="ResourceName">
+        <attr name="header" format="string"/>
+        <attr name="layout" format="reference"/>
+        <attr name="expanded" format="boolean"/>
+    </declare-styleable>
 </resources>

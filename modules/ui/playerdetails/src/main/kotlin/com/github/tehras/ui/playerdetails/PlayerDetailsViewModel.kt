@@ -7,6 +7,7 @@ import com.github.tehras.base.arch.executors.DbExectutor
 import com.github.tehras.base.arch.executors.NetworkExecutor
 import com.github.tehras.base.arch.rx.GlobalBus
 import com.github.tehras.base.arch.rx.NavEvent
+import com.github.tehras.base.arch.rx.shareBehavior
 import com.github.tehras.base.arch.source.DataSource
 import com.github.tehras.db.dao.PlayersDao
 import com.github.tehras.db.models.Player
@@ -16,6 +17,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.plusAssign
 import io.reactivex.rxkotlin.withLatestFrom
+import timber.log.Timber
 import javax.inject.Inject
 
 class PlayerDetailsViewModel @Inject constructor(
@@ -34,19 +36,20 @@ class PlayerDetailsViewModel @Inject constructor(
     override fun onCreate() {
         super.onCreate()
 
-        val tokenObservable = tokenProvider
-            .oauthToken()
-
         val fromDb = playersDao
             .getBy(battleTag = battleTag)
             .map { PlayerData(it, DataSource.DB) }
             .subscribeOn(dbExecutor)
+            .shareBehavior()
 
-        val fromOnline = tokenObservable
+        val fromOnline = tokenProvider
+            .oauthToken()
+            .map { Timber.d("token incoming") }
             .flatMap { playersService.getPlayer(battleTag) }
             .map { PlayerData(it, DataSource.NETWORK) }
             .toObservable()
             .subscribeOn(networkExecutor)
+            .shareBehavior()
 
         val playerObservable = Observable
             .merge<PlayerData>(fromDb, fromOnline)

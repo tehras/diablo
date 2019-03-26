@@ -1,0 +1,432 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 8,
+    "identityHash": "74fd4ec630f8f831583bc19fdad52d81",
+    "entities": [
+      {
+        "tableName": "players",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`battleTag` TEXT NOT NULL, `paragonLevel` INTEGER NOT NULL, `paragonLevelHardcore` INTEGER NOT NULL, `paragonLevelSeasonHardcore` INTEGER NOT NULL, `guildName` TEXT NOT NULL, `heroes` TEXT NOT NULL, `lastHeroPlayed` INTEGER NOT NULL, `lastUpdated` INTEGER NOT NULL, `highestHardcoreLevel` INTEGER NOT NULL, `seasonalProfiles` TEXT NOT NULL, `monsters` INTEGER, `elites` INTEGER, `hardcoreMonsters` INTEGER, `demonHunter` REAL NOT NULL, `witchDoctor` REAL NOT NULL, `necromancer` REAL NOT NULL, `barbarian` REAL NOT NULL, `wizard` REAL NOT NULL, `monk` REAL NOT NULL, `crusader` REAL NOT NULL, PRIMARY KEY(`battleTag`))",
+        "fields": [
+          {
+            "fieldPath": "battleTag",
+            "columnName": "battleTag",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragonLevel",
+            "columnName": "paragonLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragonLevelHardcore",
+            "columnName": "paragonLevelHardcore",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragonLevelSeasonHardcore",
+            "columnName": "paragonLevelSeasonHardcore",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guildName",
+            "columnName": "guildName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heroes",
+            "columnName": "heroes",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastHeroPlayed",
+            "columnName": "lastHeroPlayed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastUpdated",
+            "columnName": "lastUpdated",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "highestHardcoreLevel",
+            "columnName": "highestHardcoreLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seasonalProfiles",
+            "columnName": "seasonalProfiles",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kills.monsters",
+            "columnName": "monsters",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "kills.elites",
+            "columnName": "elites",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "kills.hardcoreMonsters",
+            "columnName": "hardcoreMonsters",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "timePlayed.demonHunter",
+            "columnName": "demonHunter",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.witchDoctor",
+            "columnName": "witchDoctor",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.necromancer",
+            "columnName": "necromancer",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.barbarian",
+            "columnName": "barbarian",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.wizard",
+            "columnName": "wizard",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.monk",
+            "columnName": "monk",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timePlayed.crusader",
+            "columnName": "crusader",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "battleTag"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "heroes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `heroeClass` TEXT NOT NULL, `gender` INTEGER NOT NULL, `level` INTEGER NOT NULL, `lastUpdated` INTEGER, `seasonal` INTEGER NOT NULL, `hardcore` INTEGER NOT NULL, `paragonLevel` INTEGER NOT NULL, `seasonCreated` INTEGER NOT NULL, `items` TEXT NOT NULL, `legendaryPowers` TEXT NOT NULL, `highestSoloRiftCompleted` INTEGER NOT NULL, `monsters` INTEGER, `elites` INTEGER, `hardcoreMonsters` INTEGER, `active` TEXT NOT NULL, `passive` TEXT NOT NULL, `life` REAL NOT NULL, `damage` REAL NOT NULL, `toughness` REAL NOT NULL, `healing` REAL NOT NULL, `attackSpeed` REAL NOT NULL, `armor` REAL NOT NULL, `strength` REAL NOT NULL, `dexterity` REAL NOT NULL, `vitality` REAL NOT NULL, `intelligence` REAL NOT NULL, `physicalResist` REAL NOT NULL, `fireResist` REAL NOT NULL, `coldResist` REAL NOT NULL, `lightningResist` REAL NOT NULL, `poisonResist` REAL NOT NULL, `arcaneResist` REAL NOT NULL, `blockChance` REAL NOT NULL, `blockAmountMin` REAL NOT NULL, `blockAmountMax` REAL NOT NULL, `goldFind` REAL NOT NULL, `critChance` REAL NOT NULL, `thorns` REAL NOT NULL, `lifeSteal` REAL NOT NULL, `lifePerKill` REAL NOT NULL, `lifeOnHit` REAL NOT NULL, `primaryResource` REAL NOT NULL, `secondaryResource` REAL NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heroeClass",
+            "columnName": "heroeClass",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "gender",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "level",
+            "columnName": "level",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastUpdated",
+            "columnName": "lastUpdated",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "seasonal",
+            "columnName": "seasonal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hardcore",
+            "columnName": "hardcore",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "paragonLevel",
+            "columnName": "paragonLevel",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "seasonCreated",
+            "columnName": "seasonCreated",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "items",
+            "columnName": "items",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "legendaryPowers",
+            "columnName": "legendaryPowers",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "highestSoloRiftCompleted",
+            "columnName": "highestSoloRiftCompleted",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kills.monsters",
+            "columnName": "monsters",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "kills.elites",
+            "columnName": "elites",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "kills.hardcoreMonsters",
+            "columnName": "hardcoreMonsters",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "skills.active",
+            "columnName": "active",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "skills.passive",
+            "columnName": "passive",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.life",
+            "columnName": "life",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.damage",
+            "columnName": "damage",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.toughness",
+            "columnName": "toughness",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.healing",
+            "columnName": "healing",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.attackSpeed",
+            "columnName": "attackSpeed",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.armor",
+            "columnName": "armor",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.strength",
+            "columnName": "strength",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.dexterity",
+            "columnName": "dexterity",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.vitality",
+            "columnName": "vitality",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.intelligence",
+            "columnName": "intelligence",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.physicalResist",
+            "columnName": "physicalResist",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.fireResist",
+            "columnName": "fireResist",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.coldResist",
+            "columnName": "coldResist",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.lightningResist",
+            "columnName": "lightningResist",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.poisonResist",
+            "columnName": "poisonResist",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.arcaneResist",
+            "columnName": "arcaneResist",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.blockChance",
+            "columnName": "blockChance",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.blockAmountMin",
+            "columnName": "blockAmountMin",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.blockAmountMax",
+            "columnName": "blockAmountMax",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.goldFind",
+            "columnName": "goldFind",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.critChance",
+            "columnName": "critChance",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.thorns",
+            "columnName": "thorns",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.lifeSteal",
+            "columnName": "lifeSteal",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.lifePerKill",
+            "columnName": "lifePerKill",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.lifeOnHit",
+            "columnName": "lifeOnHit",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.primaryResource",
+            "columnName": "primaryResource",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "stats.secondaryResource",
+            "columnName": "secondaryResource",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"74fd4ec630f8f831583bc19fdad52d81\")"
+    ]
+  }
+}

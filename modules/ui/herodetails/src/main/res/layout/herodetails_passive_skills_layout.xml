@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:padding="@dimen/default_padding_small"
+        android:layout_width="wrap_content"
+        android:background="@drawable/common_views_rounded_corners"
+        android:minWidth="64dp"
+        android:elevation="@dimen/elevation_standard"
+        android:layout_margin="@dimen/elevation_standard"
+        android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/herodetails_passive_skill_image"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/default_padding_small"
+            app:layout_constraintTop_toBottomOf="@+id/herodetails_passive_skills_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="@dimen/herodetails_skill_image_size"
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_height="@dimen/herodetails_skill_image_size"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/herodetails_passive_skills_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:textStyle="bold"
+            android:textColor="?typePrimary"
+            tools:text="Fists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

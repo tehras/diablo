@@ -7,6 +7,7 @@ import com.github.tehras.base.arch.executors.DbExectutor
 import com.github.tehras.base.arch.executors.NetworkExecutor
 import com.github.tehras.db.dao.HeroesDao
 import com.github.tehras.db.models.HeroDetails
+import io.reactivex.Observable
 import io.reactivex.Scheduler
 import javax.inject.Inject
 
@@ -22,14 +23,27 @@ class HeroDetailsViewModel @Inject constructor(
     override fun onCreate() {
         super.onCreate()
 
+        val token = tokenProvider
+            .oauthToken()
+
+        val heroDetailsLocal = token
+            .flatMapObservable { heroesDao.getBy(heroId) }
+            .subscribeOn(dbExecutor)
+
         val heroDetailsOnline = tokenProvider
             .oauthToken()
-            .flatMap { heroDetailsService.getHeroDetails(battleTag, heroId.toString()) }
+            .flatMap {
+                heroDetailsService.getHeroDetails(battleTag, heroId.toString())
+            }
+            .doOnSuccess { heroesDao.insert(it) }
             .subscribeOn(networkExecutor)
-
-        heroDetailsOnline
-            .map(::HomeDetailsState)
             .toObservable()
+
+        val heroDetails = Observable
+            .merge(heroDetailsLocal, heroDetailsOnline)
+
+        heroDetails
+            .map(::HomeDetailsState)
             .subscribeUntilDestroyed()
     }
 }
